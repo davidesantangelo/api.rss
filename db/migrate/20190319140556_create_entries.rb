@@ -2,7 +2,6 @@ class CreateEntries < ActiveRecord::Migration[5.2]
   def change
     create_table :entries, id: :uuid  do |t|
       t.references :feed, index: true, foreign_key: true, type: :uuid
-      t.references :author, index: true, foreign_key: true, type: :uuid
       t.string :title
       t.text :body
       t.string :url

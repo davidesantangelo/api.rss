@@ -22,11 +22,4 @@ class Feed < ApplicationRecord
       Entry.add(feed_id: self.id, entry: entry)
     end
   end
-
-  def self.author_name(entry: )
-    return entry.author if entry.author.present?
-
-    uri = URI.parse(entry.url)
-    uri.host
-  end
 end

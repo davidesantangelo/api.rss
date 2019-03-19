@@ -17,19 +17,8 @@ ActiveRecord::Schema.define(version: 2019_03_19_140556) do
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "authors", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.string "website"
-    t.jsonb "metadata"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_authors_on_name"
-    t.index ["website"], name: "index_authors_on_website"
-  end
-
   create_table "entries", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "feed_id"
-    t.uuid "author_id"
     t.string "title"
     t.text "body"
     t.string "url"
@@ -39,7 +28,6 @@ ActiveRecord::Schema.define(version: 2019_03_19_140556) do
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_entries_on_author_id"
     t.index ["categories"], name: "index_entries_on_categories", using: :gin
     t.index ["external_id"], name: "index_entries_on_external_id", unique: true
     t.index ["feed_id"], name: "index_entries_on_feed_id"
@@ -60,6 +48,5 @@ ActiveRecord::Schema.define(version: 2019_03_19_140556) do
     t.index ["url"], name: "index_feeds_on_url", unique: true
   end
 
-  add_foreign_key "entries", "authors"
   add_foreign_key "entries", "feeds"
 end

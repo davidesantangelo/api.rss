@@ -82,6 +82,9 @@ GEM
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.4)
+    dandelionapi (0.0.5)
+      faraday (~> 0.9, >= 0.9.0)
+      faraday_middleware (~> 0.9, >= 0.9.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.8.0)
@@ -277,6 +280,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  dandelionapi
   fast_jsonapi
   feedjira
   figaro

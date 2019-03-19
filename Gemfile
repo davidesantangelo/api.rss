@@ -38,6 +38,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'api-pagination'
 gem 'bootstrap'
+gem 'dandelionapi'
 gem 'fast_jsonapi'
 gem 'feedjira'
 gem 'figaro'
