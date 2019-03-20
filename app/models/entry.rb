@@ -17,6 +17,9 @@ class Entry < ApplicationRecord
   end
 
   def enrich
-    
+    self.annotations = Service::Dandelion.annotations(text: self.body)
+    self.sentiment = Service::Dandelion.sentiment(text: self.body)
+
+    save!
   end
 end

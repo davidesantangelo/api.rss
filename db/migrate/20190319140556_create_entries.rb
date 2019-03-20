@@ -8,6 +8,8 @@ class CreateEntries < ActiveRecord::Migration[5.2]
       t.string :image_url
       t.string :external_id
       t.string :categories, array: true, default: '{}'
+      t.jsonb :annotations, default: '{}'
+      t.jsonb :sentiment, default: '{}'
       t.datetime :published_at
       t.timestamps
     end
@@ -15,5 +17,7 @@ class CreateEntries < ActiveRecord::Migration[5.2]
     add_index :entries, :categories, using: 'gin'
     add_index :entries, :url, unique: true
     add_index :entries, :external_id, unique: true
+    add_index :entries, :annotations, using: :gin
+    add_index :entries, :sentiment, using: :gin
   end
 end

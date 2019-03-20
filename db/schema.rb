@@ -25,12 +25,16 @@ ActiveRecord::Schema.define(version: 2019_03_19_140556) do
     t.string "image_url"
     t.string "external_id"
     t.string "categories", default: [], array: true
+    t.jsonb "annotations", default: "{}"
+    t.jsonb "sentiment", default: "{}"
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["annotations"], name: "index_entries_on_annotations", using: :gin
     t.index ["categories"], name: "index_entries_on_categories", using: :gin
     t.index ["external_id"], name: "index_entries_on_external_id", unique: true
     t.index ["feed_id"], name: "index_entries_on_feed_id"
+    t.index ["sentiment"], name: "index_entries_on_sentiment", using: :gin
     t.index ["url"], name: "index_entries_on_url", unique: true
   end
 

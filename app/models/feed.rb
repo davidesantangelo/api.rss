@@ -1,8 +1,4 @@
-require 'w3c_validators'
-
 class Feed < ApplicationRecord
-  include W3CValidators
-
   has_many :entries
   
   def self.feed_parse(url: )
