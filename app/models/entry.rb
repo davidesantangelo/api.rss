@@ -1,4 +1,12 @@
 class Entry < ApplicationRecord
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
+  def as_indexed_json(options={})
+    as_json(except: ['annotations', 'sentiment'])
+  end
+
+  # relations
   belongs_to :feed
 
   def self.add(feed_id: , entry: )

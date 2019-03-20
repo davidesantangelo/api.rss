@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/elastic/elasticsearch-rails.git
+  revision: c73c5a468aa475b898e82409442debd6f3ff1d3a
+  branch: 6.x
+  specs:
+    elasticsearch-model (6.0.0)
+      activesupport (> 3)
+      elasticsearch (> 1)
+      hashie
+    elasticsearch-rails (6.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -59,7 +70,7 @@ GEM
       sassc-rails (>= 2.0.0)
     builder (3.2.3)
     byebug (11.0.1)
-    capybara (3.14.0)
+    capybara (3.15.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -87,6 +98,14 @@ GEM
       faraday_middleware (~> 0.9, >= 0.9.1)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    elasticsearch (6.2.0)
+      elasticsearch-api (= 6.2.0)
+      elasticsearch-transport (= 6.2.0)
+    elasticsearch-api (6.2.0)
+      multi_json
+    elasticsearch-transport (6.2.0)
+      faraday
+      multi_json
     erubi (1.8.0)
     execjs (2.7.0)
     faraday (0.15.4)
@@ -105,6 +124,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    hashie (3.6.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.6.0)
@@ -144,14 +164,14 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
-    pagy (2.1.2)
+    pagy (2.1.3)
     pg (1.1.4)
     pg_search (2.1.4)
       activerecord (>= 4.2)
       activesupport (>= 4.2)
     popper_js (1.14.5)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (3.12.1)
     rack (2.0.6)
     rack-protection (2.0.5)
       rack
@@ -281,6 +301,8 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   dandelionapi
+  elasticsearch-model!
+  elasticsearch-rails!
   fast_jsonapi
   feedjira
   figaro
