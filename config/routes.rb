@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'feeds#index'
-
-  resources :feeds
+  resources :feeds do
+    resources :entries
+  end
 end
