@@ -9,17 +9,11 @@ gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
-# Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.2'
-# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -39,17 +33,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'api-pagination'
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
-gem 'bootstrap'
-gem 'dandelionapi'
 gem 'fast_jsonapi'
 gem 'feedjira'
 gem 'figaro'
-gem 'jquery-rails'
 gem 'pagy'
-gem 'pg_search'
+gem 'rack-cors', require: 'rack/cors'
 gem 'rest-client'
 gem 'sidekiq'
-gem 'slim-rails'
 gem 'w3c_validators'
 
 group :development, :test do
