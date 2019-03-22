@@ -48,16 +48,34 @@ class Entry < ApplicationRecord
   end
 
   def text
-    strip_tags body
+    @text ||= 
+      if body.present?
+        body
+      else
+        title
+      end
+
+    strip_tags(@text)
   end
 
   def enrich
-    annotations = Service::Dandelion.annotations(text: self.body)
-    sentiment = Service::Dandelion.sentiment(text: self.body)
+    annotations = get_annotations
+    sentiment = get_sentiment
 
     self.annotations = annotations
     self.sentiment = sentiment
-
+    self.enriched_at = Time.current
+    
     save!
+  end
+
+  private
+
+  def get_annotations
+    Service::Dandelion.annotations(text: self.text)
+  end
+
+  def get_sentiment
+    Service::Dandelion.sentiment(text: self.text)
   end
 end

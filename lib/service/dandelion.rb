@@ -12,6 +12,9 @@ module Service
 
       response = api(action: 'nex', payload: payload)
       response.fetch('annotations', nil)
+    rescue RestClient::ExceptionWithResponse => e
+      e.response
+      nil 
     end
 
     def self.sentiment(text: )
@@ -22,6 +25,9 @@ module Service
 
       response = api(action: 'sent', payload: payload)
       response.fetch('sentiment', nil)
+    rescue RestClient::ExceptionWithResponse => e
+      e.response
+      nil 
     end
 
 

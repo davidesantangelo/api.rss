@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_140556) do
     t.jsonb "annotations"
     t.jsonb "sentiment"
     t.datetime "published_at"
+    t.datetime "enriched_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["annotations"], name: "index_entries_on_annotations", using: :gin

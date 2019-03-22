@@ -10,6 +10,7 @@ class CreateEntries < ActiveRecord::Migration[5.2]
       t.jsonb :annotations
       t.jsonb :sentiment
       t.datetime :published_at
+      t.datetime :enriched_at
       t.timestamps
     end
 
