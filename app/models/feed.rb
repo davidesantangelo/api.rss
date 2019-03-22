@@ -1,21 +1,31 @@
 class Feed < ApplicationRecord
-  has_many :entries
+  has_many :entries, dependent: :destroy
   
-  def self.feed_parse(url: )
-    Feedjira::Feed.parse(RestClient.get(url).body) rescue nil
+  def self.parse(url: )
+    Feedjira::Feed.parse(RestClient.get(url).body)
+  rescue RestClient::ExceptionWithResponse => e
+    e.response
+  end
+
+  def self.add(url: )
+    feed = parse(url: url)
+    
+    find_or_create_by(url: url) do |f|
+      f.title = feed.title
+      f.description = feed.description.strip
+      f.image = feed.image
+    end
   end
 
   def entries
-    result = self.class.feed_parse(url: self.url)
-    
-    return [] unless result
-
-    result.entries
+    self.class.parse(url: self.url).entries rescue []
   end
 
   def import
-    entries.each do |entry|
+    imported = entries.map do |entry|
       Entry.add(feed_id: self.id, entry: entry)
     end
+
+    imported.size
   end
 end

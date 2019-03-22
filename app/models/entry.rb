@@ -1,6 +1,7 @@
 class Entry < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  include ActionView::Helpers::SanitizeHelper
 
   def as_indexed_json(options = {})
     as_json(except: ['annotations', 'sentiment'])
@@ -9,6 +10,8 @@ class Entry < ApplicationRecord
   # relations
   belongs_to :feed
 
+
+  # elastic search callbacks
   after_commit on: [:create] do
     __elasticsearch__.index_document 
   end
@@ -21,6 +24,7 @@ class Entry < ApplicationRecord
     __elasticsearch__.delete_document 
   end
 
+  # methods
   def self.add(feed_id: , entry: )
     return if find_by(url: entry.url)
 
@@ -29,16 +33,30 @@ class Entry < ApplicationRecord
       title: entry.title,
       body: entry.summary,
       url: entry.url,
-      categories: entry.try(:categories),
+      external_id: entry.entry_id,
+      categories: (entry.try(:categories) || []).map(&:downcase),
       published_at: entry.published
     }
 
     create!(attrs)
   end
 
+  def tags
+    self.annotations.to_a.map do |annotation|
+      annotation['title'].downcase
+    end.uniq
+  end
+
+  def text
+    strip_tags body
+  end
+
   def enrich
-    self.annotations = Service::Dandelion.annotations(text: self.body)
-    self.sentiment = Service::Dandelion.sentiment(text: self.body)
+    annotations = Service::Dandelion.annotations(text: self.body)
+    sentiment = Service::Dandelion.sentiment(text: self.body)
+
+    self.annotations = annotations
+    self.sentiment = sentiment
 
     save!
   end

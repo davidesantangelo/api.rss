@@ -5,11 +5,10 @@ class CreateEntries < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :body
       t.string :url
-      t.string :image_url
       t.string :external_id
-      t.string :categories, array: true, default: '{}'
-      t.jsonb :annotations, default: '{}'
-      t.jsonb :sentiment, default: '{}'
+      t.string :categories, array: true
+      t.jsonb :annotations
+      t.jsonb :sentiment
       t.datetime :published_at
       t.timestamps
     end

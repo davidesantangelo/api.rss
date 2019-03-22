@@ -248,6 +248,7 @@ DEPENDENCIES
   fast_jsonapi
   feedjira
   figaro
+  hashie
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pagy

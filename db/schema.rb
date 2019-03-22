@@ -22,11 +22,10 @@ ActiveRecord::Schema.define(version: 2019_03_19_140556) do
     t.string "title"
     t.text "body"
     t.string "url"
-    t.string "image_url"
     t.string "external_id"
-    t.string "categories", default: [], array: true
-    t.jsonb "annotations", default: "{}"
-    t.jsonb "sentiment", default: "{}"
+    t.string "categories", array: true
+    t.jsonb "annotations"
+    t.jsonb "sentiment"
     t.datetime "published_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,7 +42,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_140556) do
     t.text "description"
     t.jsonb "image"
     t.string "url"
-    t.string "tags", default: [], array: true
+    t.string "tags", array: true
     t.float "rank", default: 0.0
     t.integer "status", default: 0
     t.datetime "created_at", null: false
