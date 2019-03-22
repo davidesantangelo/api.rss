@@ -3,13 +3,8 @@ class Entry < ApplicationRecord
   include Elasticsearch::Model::Callbacks
   include ActionView::Helpers::SanitizeHelper
 
-  def as_indexed_json(options = {})
-    as_json(except: ['annotations', 'sentiment'])
-  end
-  
   # relations
-  belongs_to :feed
-
+  belongs_to :feed, counter_cache: true
 
   # elastic search callbacks
   after_commit on: [:create] do
@@ -24,7 +19,7 @@ class Entry < ApplicationRecord
     __elasticsearch__.delete_document 
   end
 
-  # methods
+  # class methods
   def self.add(feed_id: , entry: )
     return if find_by(url: entry.url)
 
@@ -41,6 +36,11 @@ class Entry < ApplicationRecord
     create!(attrs)
   end
 
+  # instance methods  
+  def as_indexed_json(options = {})
+    as_json(except: ['annotations', 'sentiment'])
+  end
+
   def tags
     self.annotations.to_a.map do |annotation|
       annotation['title'].downcase
@@ -48,14 +48,9 @@ class Entry < ApplicationRecord
   end
 
   def text
-    @text ||= 
-      if body.present?
-        body
-      else
-        title
-      end
+    return title unless body.present?
 
-    strip_tags(@text)
+    strip_tags(body)
   end
 
   def enrich

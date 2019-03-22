@@ -1,6 +1,11 @@
 class Feed < ApplicationRecord
+  # relations
   has_many :entries, dependent: :destroy
   
+  # callbacks
+  after_create :async_import
+  
+  # class methods
   def self.parse(url: )
     Feedjira::Feed.parse(RestClient.get(url).body)
   rescue RestClient::ExceptionWithResponse => e
@@ -17,6 +22,7 @@ class Feed < ApplicationRecord
     end
   end
 
+  # instance methods
   def import!
     fetch_entries.map do |entry|
       Entry.add(feed_id: self.id, entry: entry)
@@ -28,6 +34,10 @@ class Feed < ApplicationRecord
       entry.enrich
       entry
     end
+  end
+
+  def async_import
+    ImportWorker.perform_async(self.id)
   end
 
   private

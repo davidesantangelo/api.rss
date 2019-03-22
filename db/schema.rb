@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_19_140556) do
+ActiveRecord::Schema.define(version: 2019_03_22_110855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_140556) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "entries_count", default: 0
     t.index ["tags"], name: "index_feeds_on_tags", using: :gin
     t.index ["url"], name: "index_feeds_on_url", unique: true
   end

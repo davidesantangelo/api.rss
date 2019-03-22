@@ -1,6 +1,7 @@
 class EntriesController < BaseController
   # callbacks
-  before_action :set_entry, only: [:show]
+  before_action :set_feed
+  before_action :set_feed_entry, only: [:show]
 
   # GET /feeds/:id/entries.json
   def index
@@ -16,7 +17,11 @@ class EntriesController < BaseController
 
   private
 
-  def set_entry
-    @entry = Entry.where(feed_id: params[:feed_id]).find(params[:id])
+  def set_feed
+    @feed = Feed.find(params[:feed_id])
+  end
+
+  def set_feed_entry
+    @entry = @feed.entries.find_by!(id: params[:id]) if @feed
   end
 end
