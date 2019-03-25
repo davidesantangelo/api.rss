@@ -8,6 +8,9 @@ class BaseController < ApplicationController
 
   attr_reader :api_key
 
+  APP_SECRET = ENV['app_secret']
+  APP_TOKEN = ENV['app_token']
+
   def current_token
     @current_token ||= authenticate_token
   end
@@ -22,17 +25,26 @@ class BaseController < ApplicationController
     json_error_response(Response::ACCESS_TOKEN_EXCEPTION, message, :unauthorized)
   end
 
-  def decode_token_payload(token)
-    payload, header = JWT.decode token, ENV['app_secret'], true, { algorithm: 'HS256' }
+  def decoded_app_token(token)
+    payload, _ = JWT.decode token, APP_SECRET, true, { algorithm: 'HS256' }
 
-    payload
+    app_token = payload.fetch('api_key', nil)
+
+    app_token
   rescue JWT::DecodeError
-    {}
+    nil
   end
 
   def authenticate_token
     authenticate_with_http_token do |token, options|
-      decode_token_payload(token).fetch('api_key', nil) == ENV['api_key']
+      if app_token = decoded_app_token(token)
+        # Compare the tokens in a time-constant manner, to mitigate timing attacks.
+        ActiveSupport::SecurityUtils.secure_compare(
+          ::Digest::SHA256.hexdigest(token),
+          ::Digest::SHA256.hexdigest(app_token))
+
+        app_token == APP_TOKEN
+      end
     end
   end
 end
