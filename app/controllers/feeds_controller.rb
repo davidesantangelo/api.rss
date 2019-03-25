@@ -4,7 +4,7 @@ class FeedsController < BaseController
 
   # GET /feeds
   def index
-    _, feeds = pagy Feed.all 
+    @pagy,  feeds = pagy Feed.all 
 
     json_response_with_serializer(feeds, Serializer::FEED)
   end

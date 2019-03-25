@@ -1,4 +1,6 @@
 class Entry < ApplicationRecord
+  extend Pagy::Search
+  
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include ActionView::Helpers::SanitizeHelper
