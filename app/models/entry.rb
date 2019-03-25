@@ -29,11 +29,18 @@ class Entry < ApplicationRecord
       body: entry.summary,
       url: entry.url,
       external_id: entry.entry_id,
-      categories: (entry.try(:categories) || []).map(&:downcase),
+      categories: categories(entry: entry).map(&:downcase),
       published_at: entry.published
     }
 
     create!(attrs)
+  end
+
+  def self.categories(entry: )
+    res = entry.try(:categories)
+    res.to_a.join(",").split(",").flatten.map(&:strip)
+  rescue Exception
+    []
   end
 
   # instance methods  

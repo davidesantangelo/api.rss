@@ -1,4 +1,6 @@
 class Feed < ApplicationRecord
+  include W3CValidators
+
   # relations
   has_many :entries, dependent: :destroy
   
@@ -8,18 +10,28 @@ class Feed < ApplicationRecord
   # class methods
   def self.parse(url: )
     Feedjira::Feed.parse(RestClient.get(url).body)
+  rescue URI::InvalidURIError => e
+    Rails.logger.error(e)
+    nil
   rescue RestClient::ExceptionWithResponse => e
-    e.response
-  end
+    Rails.logger.error(e)
+    nil
+  end 
 
   def self.add(url: )
     feed = parse(url: url)
     
+    return false unless feed
+
     find_or_create_by(url: url) do |f|
       f.title = feed.title.strip
       f.description = feed.description.strip
       f.image = feed.image
     end
+  end
+
+  def self.validate(url: )
+    FeedValidator.new.validate_uri(url)
   end
 
   # instance methods
