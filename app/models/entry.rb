@@ -56,7 +56,7 @@ class Entry < ApplicationRecord
   end
 
   def tags
-    return if self.annotations.to_a.blank?
+    return [] if self.annotations.to_a.blank?
 
     self.annotations.to_a.map { |a| a['title'].downcase }.uniq
   end
