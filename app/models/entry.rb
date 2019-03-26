@@ -5,6 +5,9 @@ class Entry < ApplicationRecord
   include Elasticsearch::Model::Callbacks
   include ActionView::Helpers::SanitizeHelper
 
+  # scopes
+  default_scope { order(created_at: :desc) }
+
   # relations
   belongs_to :feed, counter_cache: true
 
@@ -53,18 +56,15 @@ class Entry < ApplicationRecord
   end
 
   def tags
-    @tags ||= 
-      self.annotations.to_a.map do |annotation|
-        annotation['title'].downcase
-      end
-    
-    @tags.uniq
+    return if self.annotations.to_a.blank?
+
+    self.annotations.to_a.map { |a| a['title'].downcase }.uniq
   end
 
   def text
     return title unless body.present?
 
-    strip_tags(body)
+    strip_tags(body).strip
   end
 
   def enrich
