@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_22_110855) do
+ActiveRecord::Schema.define(version: 2019_03_26_082517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 2019_03_22_110855) do
     t.integer "entries_count", default: 0
     t.index ["tags"], name: "index_feeds_on_tags", using: :gin
     t.index ["url"], name: "index_feeds_on_url", unique: true
+  end
+
+  create_table "tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "key"
+    t.datetime "expires_at"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_tokens_on_key", unique: true
   end
 
   add_foreign_key "entries", "feeds"
