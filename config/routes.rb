@@ -12,4 +12,6 @@ Rails.application.routes.draw do
       get :entries
     end
   end
+
+  resources :tokens, only: [:create]
 end

@@ -1,5 +1,9 @@
 class Log < ApplicationRecord
+  # relations
   belongs_to :feed
+
+  # validations
+  validates :feed, presence: true
 
   def start!
     self.start_import_at = Time.current

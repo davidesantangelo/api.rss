@@ -42,6 +42,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'rest-client'
 gem 'sidekiq'
 gem 'w3c_validators'
+gem 'whenever', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

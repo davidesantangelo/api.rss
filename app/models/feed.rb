@@ -22,6 +22,12 @@ class Feed < ApplicationRecord
     nil
   end 
 
+  def self.store_new_entries!
+    Feed.all.find_each do |feed|
+      feed.async_update
+    end
+  end
+
   def self.add(url: )
     feed = parse(url: url)
     
@@ -44,12 +50,13 @@ class Feed < ApplicationRecord
 
     log.start!
 
-    entries_array =
-      fetch_entries(from: from).map do |entry|
-        Entry.add(feed_id: self.id, entry: entry)
-      end
+    count = 0
+    fetch_entries(from: from).each do |entry|
+      created = Entry.add(feed_id: self.id, entry: entry)
+      count += 1 if created
+    end
 
-    log.stop!(entries_count: entries_array.size)
+    log.stop!(entries_count: count)
   end
 
   def enrich!
@@ -61,6 +68,10 @@ class Feed < ApplicationRecord
 
   def async_import
     ImportFeedWorker.perform_async(self.id)
+  end
+
+  def async_update
+    UpdateFeedWorker.perform_async(self.id)
   end
 
   private

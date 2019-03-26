@@ -23,7 +23,7 @@ class Entry < ApplicationRecord
 
   # class methods
   def self.add(feed_id: , entry: )
-    return if find_by(url: entry.url)
+    return false if find_by(url: entry.url)
 
     attrs = {
       feed_id: feed_id,
@@ -36,6 +36,8 @@ class Entry < ApplicationRecord
     }
 
     create!(attrs)
+
+    true
   end
 
   def self.categories(entry: )
@@ -51,9 +53,12 @@ class Entry < ApplicationRecord
   end
 
   def tags
-    self.annotations.to_a.map do |annotation|
-      annotation['title'].downcase
-    end.uniq
+    @tags ||= 
+      self.annotations.to_a.map do |annotation|
+        annotation['title'].downcase
+      end
+    
+    @tags.uniq
   end
 
   def text
