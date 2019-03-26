@@ -3,6 +3,7 @@ class Token < ApplicationRecord
 
   # scopes
   scope :active, -> { where(active: :true).where("expires_at IS NULL OR expires_at >= ?", Time.current) }
+  scope :expired, -> { where.not(expires_at: nil).where("expires_at > ?", Time.current) }
 
   protected
 
