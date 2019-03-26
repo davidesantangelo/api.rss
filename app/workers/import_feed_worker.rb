@@ -1,4 +1,4 @@
-class ImportWorker
+class ImportFeedWorker
   include Sidekiq::Worker
 
   def perform(feed_id)

@@ -12,6 +12,6 @@ class SearchController < BaseController
 
     @pagy, @entries = pagy_elasticsearch_rails(Entry.pagy_search(payload))
 
-    json_response_with_serializer(@entries, Serializer::ENTRY)
+    json_response_with_serializer(@entries.records, Serializer::ENTRY)
   end
 end

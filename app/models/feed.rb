@@ -7,6 +7,9 @@ class Feed < ApplicationRecord
   # callbacks
   after_create :async_import
   
+  # enums
+  enum status: [ :created, :scheduled, :imported ]
+
   # class methods
   def self.parse(url: )
     Feedjira::Feed.parse(RestClient.get(url).body)
@@ -35,8 +38,8 @@ class Feed < ApplicationRecord
   end
 
   # instance methods
-  def import!
-    fetch_entries.map do |entry|
+  def import!(from: nil)
+    fetch_entries(from: from).map do |entry|
       Entry.add(feed_id: self.id, entry: entry)
     end
   end
@@ -49,12 +52,18 @@ class Feed < ApplicationRecord
   end
 
   def async_import
-    ImportWorker.perform_async(self.id)
+    ImportFeedWorker.perform_async(self.id)
   end
 
   private
 
-  def fetch_entries
-    self.class.parse(url: self.url).entries rescue []
+  def fetch_entries(from: nil)
+    results = self.class.parse(url: self.url).entries rescue []
+    
+    if from
+      results.select do |entry| 
+        entry.published.to_i >= from.to_i
+      end
+    end
   end
 end
