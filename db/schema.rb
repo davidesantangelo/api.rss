@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_082517) do
+ActiveRecord::Schema.define(version: 2019_03_26_135943) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -53,6 +53,18 @@ ActiveRecord::Schema.define(version: 2019_03_26_082517) do
     t.index ["url"], name: "index_feeds_on_url", unique: true
   end
 
+  create_table "logs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "feed_id"
+    t.datetime "start_import_at"
+    t.datetime "end_import_at"
+    t.integer "entries_count"
+    t.jsonb "metadata"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feed_id"], name: "index_logs_on_feed_id"
+    t.index ["metadata"], name: "index_logs_on_metadata", using: :gin
+  end
+
   create_table "tokens", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "key"
     t.datetime "expires_at"
@@ -63,4 +75,5 @@ ActiveRecord::Schema.define(version: 2019_03_26_082517) do
   end
 
   add_foreign_key "entries", "feeds"
+  add_foreign_key "logs", "feeds"
 end

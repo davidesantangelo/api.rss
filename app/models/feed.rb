@@ -3,7 +3,8 @@ class Feed < ApplicationRecord
 
   # relations
   has_many :entries, dependent: :destroy
-  
+  has_many :logs, dependent: :destroy
+
   # callbacks
   after_create :async_import
   
@@ -39,9 +40,16 @@ class Feed < ApplicationRecord
 
   # instance methods
   def import!(from: nil)
-    fetch_entries(from: from).map do |entry|
-      Entry.add(feed_id: self.id, entry: entry)
-    end
+    log = Log.create!(feed: self)
+
+    log.start!
+
+    entries_array =
+      fetch_entries(from: from).map do |entry|
+        Entry.add(feed_id: self.id, entry: entry)
+      end
+
+    log.stop!(entries_count: entries_array.size)
   end
 
   def enrich!
@@ -60,10 +68,12 @@ class Feed < ApplicationRecord
   def fetch_entries(from: nil)
     results = self.class.parse(url: self.url).entries rescue []
     
-    if from
+    if from.present?
       results.select do |entry| 
         entry.published.to_i >= from.to_i
       end
     end
+
+    results
   end
 end
