@@ -9,7 +9,7 @@ class Feed < ApplicationRecord
   after_create :async_import
   
   # enums
-  enum status: [ :created, :scheduled, :imported ]
+  enum status: [ :enabled, :disabled ]
 
   # class methods
   def self.parse(url: )
@@ -22,12 +22,6 @@ class Feed < ApplicationRecord
     nil
   end 
 
-  def self.store_new_entries!
-    Feed.all.find_each do |feed|
-      feed.async_update
-    end
-  end
-
   def self.add(url: )
     feed = parse(url: url)
     
@@ -37,6 +31,7 @@ class Feed < ApplicationRecord
       f.title = feed.title.strip
       f.description = feed.description.strip
       f.image = feed.image
+      f.language = feed.language
     end
   end
 
