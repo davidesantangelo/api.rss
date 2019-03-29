@@ -5,7 +5,7 @@ module Service
     def self.annotations(text: )
       payload = { 
         text: text, 
-        token: ENV['dandelion_token'],
+        token: ENV['DANDELION_TOKEN'],
         include: 'types,categories',
         top_entities: 5
       }
@@ -20,7 +20,7 @@ module Service
     def self.sentiment(text: )
       payload = { 
         text: text, 
-        token: ENV['dandelion_token']
+        token: ENV['DANDELION_TOKEN']
       }
 
       response = api(action: 'sent', payload: payload)

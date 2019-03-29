@@ -3,9 +3,7 @@ default: &default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: <%= ENV['db_username'] %>
-  password: <%= ENV['db_password'] %>
-
+  url: <%= ENV['DB_URL'] %>
 
 development:
   <<: *default
@@ -20,4 +18,5 @@ test:
 
 production:
   <<: *default
+  pool: 10
   database: feedi_production

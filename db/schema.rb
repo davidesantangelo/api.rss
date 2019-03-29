@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_145818) do
+ActiveRecord::Schema.define(version: 2019_03_29_105748) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_145818) do
     t.index ["annotations"], name: "index_entries_on_annotations", using: :gin
     t.index ["categories"], name: "index_entries_on_categories", using: :gin
     t.index ["external_id"], name: "index_entries_on_external_id", unique: true
+    t.index ["feed_id", "url"], name: "index_entries_on_feed_id_and_url", unique: true
     t.index ["feed_id"], name: "index_entries_on_feed_id"
     t.index ["sentiment"], name: "index_entries_on_sentiment", using: :gin
     t.index ["url"], name: "index_entries_on_url", unique: true
