@@ -24,6 +24,10 @@ class Entry < ApplicationRecord
     __elasticsearch__.delete_document 
   end
 
+  # validations
+  validates :url, presence: true
+  validates :title, presence: true
+  
   # class methods
   def self.add(feed_id: , entry: )
     return false if find_by(url: entry.url)

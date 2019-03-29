@@ -11,6 +11,10 @@ class Feed < ApplicationRecord
   # enums
   enum status: [ :enabled, :disabled ]
 
+  # validations
+  validates :url, presence: true
+  validates :title, presence: true
+
   # class methods
   def self.parse(url: )
     Feedjira::Feed.parse(RestClient.get(url).body)
