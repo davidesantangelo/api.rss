@@ -57,9 +57,6 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     arel (9.0.0)
     bindex (0.5.0)
-    bonsai-elasticsearch-rails (6.0.0)
-      elasticsearch-model (~> 6)
-      elasticsearch-rails (~> 6)
     bootsnap (1.4.2)
       msgpack (~> 1.0)
     builder (3.2.3)
@@ -265,7 +262,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bonsai-elasticsearch-rails (~> 6)
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
