@@ -35,6 +35,10 @@ module Feedi
 
     config.middleware.use ActionDispatch::Cookies
     
+    config.generators do |g|
+      g.orm :active_record, primary_key_type: :uuid
+    end
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading

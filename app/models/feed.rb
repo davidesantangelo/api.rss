@@ -14,6 +14,7 @@ class Feed < ApplicationRecord
   # validations
   validates :url, presence: true
   validates :title, presence: true
+  validates_associated :entries
 
   # class methods
   def self.parse(url: )
@@ -71,6 +72,10 @@ class Feed < ApplicationRecord
 
   def async_update
     UpdateFeedWorker.perform_async(self.id)
+  end
+
+  def language
+    self[:language].to_s.split("-")[0]
   end
 
   private
