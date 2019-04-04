@@ -30,7 +30,7 @@ class Entry < ApplicationRecord
   
   # class methods
   def self.add(feed_id: , entry: )
-    return false if find_by(url: entry.url)
+    return [false, nil] if find_by(url: entry.url)
 
     attrs = {
       feed_id: feed_id,
@@ -42,9 +42,9 @@ class Entry < ApplicationRecord
       published_at: entry.published
     }
 
-    create!(attrs)
+    entry = create!(attrs)
 
-    true
+    [true, entry]
   end
 
   def self.categories(entry: )

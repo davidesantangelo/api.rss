@@ -1,5 +1,11 @@
 class SearchController < BaseController
   def entries
+
+    unless params[:q].present?
+      json_error_response('Validation Failed', 'missing q param', :unprocessable_entity)
+      return
+    end
+
     payload =  
       {
         query: {

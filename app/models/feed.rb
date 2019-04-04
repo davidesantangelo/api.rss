@@ -27,6 +27,10 @@ class Feed < ApplicationRecord
     nil
   end 
 
+  def self.recent(limit: 50)
+    enabled.where("last_import_at IS NULL OR last_import_at <= ? ", 4.hours.ago).limit(limit)
+  end
+
   def self.add(url: )
     feed = parse(url: url)
     
@@ -52,18 +56,14 @@ class Feed < ApplicationRecord
 
     count = 0
     fetch_entries(from: from).each do |entry|
-      created = Entry.add(feed_id: self.id, entry: entry)
-      count += 1 if created
+      created, entry = Entry.add(feed_id: self.id, entry: entry)
+      if created
+        count += 1 
+        entry.enrich
+      end
     end
 
     log.stop!(entries_count: count)
-  end
-
-  def enrich!
-    self.entries.where(enriched_at: nil).map do |entry|
-      entry.enrich
-      entry
-    end
   end
 
   def async_import

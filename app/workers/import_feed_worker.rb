@@ -5,6 +5,5 @@ class ImportFeedWorker
     feed = Feed.find(feed_id)
 
     feed.import!
-    feed.enrich!
   end
 end

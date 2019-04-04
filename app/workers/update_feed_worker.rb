@@ -5,6 +5,5 @@ class UpdateFeedWorker
     feed = Feed.find(feed_id)
 
     feed.import!(from: Time.current)
-    feed.enrich!
   end
 end
