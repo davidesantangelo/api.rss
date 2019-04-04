@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe FeedsController, type: :controller do
-  let(:token) { Token.create.key }
+  let(:token) { create(:token) }
 
   describe "GET #index" do
     before do
-      request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Token.encode_credentials(token)
+      request.env['HTTP_AUTHORIZATION'] = ActionController::HttpAuthentication::Token.encode_credentials(token.key)
       get :index
     end
     

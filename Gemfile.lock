@@ -88,6 +88,11 @@ GEM
       multi_json
     erubi (1.8.0)
     execjs (2.7.0)
+    factory_bot (5.0.2)
+      activesupport (>= 4.2.0)
+    factory_bot_rails (5.0.1)
+      factory_bot (~> 5.0.0)
+      railties (>= 4.2.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.13.1)
@@ -267,6 +272,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   elasticsearch-model!
   elasticsearch-rails!
+  factory_bot_rails
   fast_jsonapi
   feedjira
   figaro
