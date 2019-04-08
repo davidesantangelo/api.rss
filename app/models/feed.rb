@@ -4,9 +4,6 @@ class Feed < ApplicationRecord
   # relations
   has_many :entries, dependent: :destroy
   has_many :logs, dependent: :destroy
-
-  # callbacks
-  after_create :async_import
   
   # enums
   enum status: [ :enabled, :disabled ]
@@ -36,12 +33,16 @@ class Feed < ApplicationRecord
     
     return false unless feed
 
-    find_or_create_by(url: url) do |f|
+    feed = find_or_create_by(url: url) do |f|
       f.title = feed.title.strip
       f.description = feed.description.strip
       f.image = feed.image
       f.language = feed.language
     end
+
+    feed.async_import
+
+    feed
   end
 
   def self.validate(url: )
@@ -55,7 +56,7 @@ class Feed < ApplicationRecord
     log.start!
 
     count = 0
-    fetch_entries(from: from).each do |entry|
+    FeedParser.entries(url: self.url, from: from).each do |entry|
       created, entry = Entry.add(feed_id: self.id, entry: entry)
       if created
         count += 1 
@@ -76,19 +77,5 @@ class Feed < ApplicationRecord
 
   def language
     self[:language].to_s.split("-")[0]
-  end
-
-  private
-
-  def fetch_entries(from: nil)
-    results = self.class.parse(url: self.url).entries rescue []
-    
-    if from.present?
-      results.select do |entry| 
-        entry.published.to_i >= from.to_i
-      end
-    end
-
-    results
   end
 end
