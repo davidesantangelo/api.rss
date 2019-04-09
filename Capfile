@@ -10,5 +10,7 @@ require 'capistrano/rvm'
 require 'capistrano/puma'
 install_plugin Capistrano::Puma  # Default puma tas
 
+require 'capistrano/rails/logs'
+
 # Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
