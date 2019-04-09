@@ -37,7 +37,7 @@ set :puma_init_active_record, true  # Change to false when not using ActiveRecor
 set :migration_role, :app
 
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', '.bundle', 'public/system', 'public/uploads'
-append :linked_files, 'config/database.yml', 'config/secrets.yml', 'config/master.key'
+append :linked_files, 'config/master.key'
 
 namespace :puma do
   desc 'Create Directories for Puma Pids and Socket'
