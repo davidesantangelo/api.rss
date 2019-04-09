@@ -6,7 +6,7 @@ class WelcomeController < BaseController
       {
         "name":"Feedi API",
         "version":"0.1",
-        "github_repo_url":"https://github.com/davidesantangelo/feedi-backend",
+        "github_repo_url":"https://github.com/davidesantangelo/feedi",
         "author":"Davide Santangelo"
       }
 
