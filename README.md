@@ -28,7 +28,7 @@ Feedi API uses OAuth 2.0 token for user authorization and API authentication. Ap
 
 ### REFRESH TOKEN
 
-    curl -H "Authorization: Token UQ4sLxr1tXBX4c2e3GiG6Q2LzG7yMRuhi-LGDJqB0kJjXVtYKVyrTMyP2HtTyZpEuD71rvJy9Tn4SmHBtiimHg"  -X POST  https://api.feedi.io/tokens/refresh
+    curl -H "Authorization: Token <TOKEN>"  -X POST  https://api.feedi.io/tokens/refresh
     
 ###
     {
