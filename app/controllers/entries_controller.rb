@@ -1,7 +1,7 @@
 class EntriesController < BaseController
   # callbacks
   before_action :set_feed
-  before_action :set_feed_entry, only: [:show]
+  before_action :set_feed_entry, only: [:show, :tags]
 
   # GET /feeds/:id/entries.json
   def index
@@ -13,6 +13,11 @@ class EntriesController < BaseController
   # GET /feeds/:id/entries/:id.json
   def show
     json_response_with_serializer(@entry, Serializer::ENTRY)
+  end
+
+  # GET /feeds/:id/entries/:id/tags.json
+  def tags
+    json_response_with_serializer(@entry, Serializer::TAG)
   end
 
   private

@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :feeds, only: [:index, :show, :create] do
-    resources :entries, only: [:index, :show]
+    resources :entries, only: [:index, :show] do
+      member do
+        get :tags
+      end
+    end
     resources :logs, only: [:index, :show]
   end
 

@@ -3,4 +3,5 @@ module Serializer
   FEED = 'FeedSerializer'
   LOG = 'LogSerializer'
   TOKEN = 'TokenSerializer'
+  TAG = 'TagSerializer'
 end
