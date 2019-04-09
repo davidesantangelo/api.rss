@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :token do
+  factory :feed do
     id { SecureRandom.uuid }
     title { 'feed RSS title' }
     description { 'feed RSS description '}
