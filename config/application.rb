@@ -33,6 +33,8 @@ module Feedi
       end
     end
 
+    config.assets.initialize_on_precompile = false
+
     config.middleware.use ActionDispatch::Cookies
     
     config.generators do |g|
