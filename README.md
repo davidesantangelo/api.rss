@@ -8,7 +8,7 @@ Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep t
 
 Feedi API uses OAuth 2.0 token for user authorization and API authentication. Applications must be authorized and authenticated before they can fetch data.
 
-### GET TOKEN
+#### GET TOKEN
 
     curl -X POST  https://api.feedi.io/tokens
 
@@ -26,7 +26,7 @@ Feedi API uses OAuth 2.0 token for user authorization and API authentication. Ap
       }
     }
 
-### REFRESH TOKEN
+#### REFRESH TOKEN
 
     curl -H "Authorization: Token <TOKEN>"  -X POST  https://api.feedi.io/tokens/refresh
     
