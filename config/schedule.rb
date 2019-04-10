@@ -1,3 +1,3 @@
 every 2.hours do
-  runner Importer.run
+  rake "importer:run"
 end
