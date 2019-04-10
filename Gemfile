@@ -58,11 +58,17 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails', '~> 3.8'
   gem 'rails-controller-testing'
-  gem 'capistrano',         require: false
-  gem 'capistrano-rvm',     require: false
-  gem 'capistrano-rails',   require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano3-puma',   require: false
+  gem 'capistrano', '~> 3.11'
+  gem 'capistrano-rails', '~> 1.4'
+  gem 'capistrano-passenger', '~> 0.2.0'
+  gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+end
+
+group :deployment do 
+  gem 'ed25519', '~> 1.2'
+  gem "bcrypt_pbkdf", ">= 1.0", "< 2.0", require: false
+  gem "rbnacl", ">= 5.0", require: false
+  gem "rbnacl-libsodium", require: false
 end
 
 group :test do
