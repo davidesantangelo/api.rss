@@ -24,7 +24,7 @@ module Feedi
     config.load_defaults 5.2
     config.autoload_paths += %W( #{config.root}/lib )
     config.api_only = true
-
+    config.enable_dependency_loading = true
 
     config.middleware.insert_before 0, Rack::Cors do
       allow do
