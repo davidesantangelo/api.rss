@@ -9,6 +9,14 @@ GIT
       hashie
     elasticsearch-rails (6.0.0)
 
+GIT
+  remote: https://github.com/seuros/capistrano-sidekiq.git
+  revision: 047a131084fc78364f74615e7ccf3a4833b97c11
+  specs:
+    capistrano-sidekiq (1.0.2)
+      capistrano (>= 3.9.0)
+      sidekiq (>= 3.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -303,6 +311,7 @@ DEPENDENCIES
   capistrano-passenger (~> 0.2.0)
   capistrano-rails (~> 1.4)
   capistrano-rbenv (~> 2.1, >= 2.1.4)
+  capistrano-sidekiq!
   capybara (>= 2.15)
   ed25519 (~> 1.2)
   elasticsearch-model!
