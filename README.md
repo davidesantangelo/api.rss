@@ -10,7 +10,7 @@ Feedi API uses OAuth 2.0 token for user authorization and API authentication. Ap
 
 #### GET TOKEN
 
-    curl -X POST  https://<APIURL>/tokens
+    curl -X POST  https://feedi.me/tokens
 
 #### REFRESH TOKEN
 
