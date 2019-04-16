@@ -4,7 +4,6 @@ class Feed < ApplicationRecord
   
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
-  include ActionView::Helpers::SanitizeHelper
 
   # scopes
   default_scope { order(created_at: :desc) }
@@ -86,10 +85,6 @@ class Feed < ApplicationRecord
     end
 
     log.stop!(entries_count: count)
-  end
-
-  def as_indexed_json(options = {})
-    as_json
   end
 
   def async_import
