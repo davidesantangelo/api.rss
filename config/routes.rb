@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :feeds, only: [:index, :show, :create] do
+    collection do
+      get :popular
+      get :trending
+    end
     resources :entries, only: [:index, :show] do
       member do
         get :tags
