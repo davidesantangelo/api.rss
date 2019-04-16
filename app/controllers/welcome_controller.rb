@@ -8,10 +8,17 @@ class WelcomeController < BaseController
         "description":"This service allows you to transform RSS feed into an awesome API.",
         "version":"0.1",
         "github_repo_url":"https://github.com/davidesantangelo/feedi",
-        "author":"Davide Santangelo",
-        "website":"https://www.davidesantangelo.com"
+        "commit": commit,
+        "author": {
+          "name":"Davide Santangelo",
+          "website":"https://www.davidesantangelo.com"
+        }
       }
 
     render json: response
+  end
+
+  def commit
+    (`git rev-parse HEAD`).strip
   end
 end
