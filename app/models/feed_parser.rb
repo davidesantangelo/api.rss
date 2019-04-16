@@ -1,6 +1,6 @@
 class FeedParser
   def self.entries(url: , from: nil)
-    results = Feed.parse(url: url).entries rescue []
+    results = Feed.parse(url: clean_url(url: url)).entries rescue []
   
     if from.present?
       results.select do |entry| 
@@ -9,5 +9,12 @@ class FeedParser
     end
   
     results
+  end
+
+  def self.clean_url(url: )
+    url
+      .strip
+      .gsub("feed://","")
+      .gsub("feed:","")
   end
 end
