@@ -1,6 +1,14 @@
 class Feed < ApplicationRecord
   include W3CValidators
+  extend Pagy::Search
+  
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+  include ActionView::Helpers::SanitizeHelper
 
+  # scopes
+  default_scope { order(created_at: :desc) }
+  
   # relations
   has_many :entries, dependent: :destroy
   has_many :logs, dependent: :destroy
@@ -12,6 +20,19 @@ class Feed < ApplicationRecord
   validates :url, presence: true
   validates :title, presence: true
   validates_associated :entries
+
+  # elastic search callbacks
+  after_commit on: [:create] do
+    __elasticsearch__.index_document 
+  end
+
+  after_commit on: [:update] do
+    __elasticsearch__.update_document
+  end
+
+  after_commit on: [:destroy] do
+    __elasticsearch__.delete_document 
+  end
 
   # class methods
   def self.parse(url: )
@@ -65,6 +86,10 @@ class Feed < ApplicationRecord
     end
 
     log.stop!(entries_count: count)
+  end
+
+  def as_indexed_json(options = {})
+    as_json
   end
 
   def async_import

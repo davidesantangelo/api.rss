@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :search, only: '' do
     collection do
       get :entries
+      get :feeds
     end
   end
 
@@ -25,6 +26,4 @@ Rails.application.routes.draw do
       post :refresh
     end
   end
-
-  
 end
