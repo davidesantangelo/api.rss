@@ -53,8 +53,8 @@ class Feed < ApplicationRecord
     return false unless feed
 
     feed = find_or_create_by(url: url) do |f|
-      f.title = feed.title.strip
-      f.description = feed.description.strip
+      f.title = feed.title.to_s.strip
+      f.description = feed.description.to_s.strip
       f.image = feed.image
       f.language = feed.language
     end

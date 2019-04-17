@@ -56,7 +56,7 @@ class Entry < ApplicationRecord
   def text
     return title unless body.present?
 
-    strip_tags(body).strip
+    strip_tags(body).to_s.strip
   end
 
   def enrich
