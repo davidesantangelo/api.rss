@@ -4,25 +4,13 @@ class Entry < ApplicationRecord
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include ActionView::Helpers::SanitizeHelper
+  include Searchable
 
   # scopes
   default_scope { order(created_at: :desc) }
 
   # relations
   belongs_to :feed, counter_cache: true
-
-  # elastic search callbacks
-  after_commit on: [:create] do
-    __elasticsearch__.index_document 
-  end
-
-  after_commit on: [:update] do
-    __elasticsearch__.update_document
-  end
-
-  after_commit on: [:destroy] do
-    __elasticsearch__.delete_document 
-  end
 
   # validations
   validates :url, presence: true

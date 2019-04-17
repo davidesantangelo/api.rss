@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
+gem 'elasticsearch-dsl', git: 'git://github.com/elasticsearch/elasticsearch-ruby.git'
 gem 'fast_jsonapi'
 gem 'feedjira'
 gem 'figaro'

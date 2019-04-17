@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/elasticsearch/elasticsearch-ruby.git
+  revision: 1535d1a890a0033a3daa61d9a91756fd81149719
+  specs:
+    elasticsearch-dsl (0.1.7)
+
+GIT
   remote: https://github.com/elastic/elasticsearch-rails.git
   revision: c73c5a468aa475b898e82409442debd6f3ff1d3a
   branch: 6.x
@@ -105,12 +111,12 @@ GEM
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     ed25519 (1.2.4)
-    elasticsearch (6.2.0)
-      elasticsearch-api (= 6.2.0)
-      elasticsearch-transport (= 6.2.0)
-    elasticsearch-api (6.2.0)
+    elasticsearch (6.3.0)
+      elasticsearch-api (= 6.3.0)
+      elasticsearch-transport (= 6.3.0)
+    elasticsearch-api (6.3.0)
       multi_json
-    elasticsearch-transport (6.2.0)
+    elasticsearch-transport (6.3.0)
       faraday
       multi_json
     erubi (1.8.0)
@@ -314,6 +320,7 @@ DEPENDENCIES
   capistrano-sidekiq!
   capybara (>= 2.15)
   ed25519 (~> 1.2)
+  elasticsearch-dsl!
   elasticsearch-model!
   elasticsearch-rails!
   factory_bot_rails

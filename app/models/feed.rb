@@ -4,6 +4,7 @@ class Feed < ApplicationRecord
   
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
+  include Searchable
 
   # scopes
   default_scope { order(created_at: :desc) }
@@ -20,19 +21,6 @@ class Feed < ApplicationRecord
   validates :url, presence: true
   validates :title, presence: true
   validates_associated :entries
-
-  # elastic search callbacks
-  after_commit on: [:create] do
-    __elasticsearch__.index_document 
-  end
-
-  after_commit on: [:update] do
-    __elasticsearch__.update_document
-  end
-
-  after_commit on: [:destroy] do
-    __elasticsearch__.delete_document 
-  end
 
   # class methods
   def self.parse(url: )
