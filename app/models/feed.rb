@@ -24,6 +24,8 @@ class Feed < ApplicationRecord
 
   # class methods
   def self.parse(url: )
+    url = url.gsub("feed","http").strip
+
     Feedjira::Feed.parse(RestClient.get(url).body)
   rescue URI::InvalidURIError => e
     Rails.logger.error(e)
