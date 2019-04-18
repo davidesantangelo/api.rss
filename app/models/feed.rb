@@ -51,7 +51,7 @@ class Feed < ApplicationRecord
     feed = find_or_create_by(url: url) do |f|
       f.title = feed.title.to_s.strip
       f.description = feed.description.to_s.strip
-      f.image = feed.image
+      f.image = feed.try(:image)
       f.language = feed.language
     end
 
