@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/elasticsearch/elasticsearch-ruby.git
-  revision: 1535d1a890a0033a3daa61d9a91756fd81149719
-  specs:
-    elasticsearch-dsl (0.1.7)
-
-GIT
   remote: https://github.com/elastic/elasticsearch-rails.git
   revision: c73c5a468aa475b898e82409442debd6f3ff1d3a
   branch: 6.x
@@ -14,6 +8,12 @@ GIT
       elasticsearch (> 1)
       hashie
     elasticsearch-rails (6.0.0)
+
+GIT
+  remote: https://github.com/elasticsearch/elasticsearch-ruby.git
+  revision: 1535d1a890a0033a3daa61d9a91756fd81149719
+  specs:
+    elasticsearch-dsl (0.1.7)
 
 GIT
   remote: https://github.com/seuros/capistrano-sidekiq.git
