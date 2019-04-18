@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :feeds, only: [:index, :show, :create] do
     collection do
       get :popular
-      get :trending
     end
     resources :entries, only: [:index, :show] do
       member do

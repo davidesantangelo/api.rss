@@ -8,7 +8,7 @@ class Feed < ApplicationRecord
 
   # scopes
   default_scope { order(created_at: :desc) }
-  scope :newest, -> { enabled.where("last_import_at IS NULL OR last_import_at <= ? ", 4.hours.ago) }
+  scope :newest, -> { enabled.where("created_at <= ?", 24.hours.ago) }
 
   # relations
   has_many :entries, dependent: :destroy
@@ -37,10 +37,6 @@ class Feed < ApplicationRecord
 
   def self.recent(limit: 50)
     unscoped.newest.limit(limit)
-  end
-
-  def self.trending(limit: 20)
-    unscoped.newest.order(entries_count: :desc).limit(limit)
   end
 
   def self.popular(limit: 20)

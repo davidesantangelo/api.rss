@@ -27,13 +27,6 @@ class FeedsController < BaseController
     json_response_with_serializer(@feeds, Serializer::FEED)
   end
 
-  # GET /feeds/trending
-  def trending
-    @feeds = Feed.trending
-
-    json_response_with_serializer(@feeds, Serializer::FEED)
-  end
-
   private
 
   def feed_params
