@@ -8,7 +8,7 @@ class Feed < ApplicationRecord
 
   # scopes
   default_scope { order(created_at: :desc) }
-  scope :newest, -> { enabled.where("last_import_at IS NULL OR last_import_at <= ? ", 24.hours.ago) }
+  scope :newest, -> { enabled.where("last_import_at IS NULL OR last_import_at <= ? ", 4.hours.ago) }
 
   # relations
   has_many :entries, dependent: :destroy
