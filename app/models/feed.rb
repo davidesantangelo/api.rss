@@ -1,21 +1,21 @@
 class Feed < ApplicationRecord
   include W3CValidators
   extend Pagy::Search
-  
+
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include Searchable
 
   # scopes
   default_scope { order(created_at: :desc) }
-  scope :newest, -> { enabled.where("created_at <= ?", 24.hours.ago) }
+  scope :newest, -> { enabled.where('created_at <= ?', 24.hours.ago) }
 
   # relations
   has_many :entries, dependent: :destroy
   has_many :logs, dependent: :destroy
-  
+
   # enums
-  enum status: [ :enabled, :disabled ]
+  enum status: %i[enabled disabled]
 
   # validations
   validates :url, presence: true
@@ -23,8 +23,8 @@ class Feed < ApplicationRecord
   validates_associated :entries
 
   # class methods
-  def self.parse(url: )
-    url = url.gsub("feed:","").gsub("feed://","").strip
+  def self.parse(url:)
+    url = url.gsub('feed:', '').gsub('feed://', '').strip
 
     Feedjira::Feed.parse(RestClient.get(url).body)
   rescue URI::InvalidURIError => e
@@ -33,7 +33,7 @@ class Feed < ApplicationRecord
   rescue RestClient::ExceptionWithResponse => e
     Rails.logger.error(e)
     nil
-  end 
+  end
 
   def self.recent(limit: 50)
     unscoped.newest.limit(limit)
@@ -43,9 +43,9 @@ class Feed < ApplicationRecord
     unscoped.enabled.order(entries_count: :desc).limit(limit)
   end
 
-  def self.add(url: )
+  def self.add(url:)
     feed = parse(url: url)
-    
+
     return false unless feed
 
     feed = find_or_create_by(url: url) do |f|
@@ -60,7 +60,7 @@ class Feed < ApplicationRecord
     feed
   end
 
-  def self.validate(url: )
+  def self.validate(url:)
     FeedValidator.new.validate_uri(url)
   end
 
@@ -71,10 +71,10 @@ class Feed < ApplicationRecord
     log.start!
 
     count = 0
-    FeedParser.entries(url: self.url, from: from).each do |entry|
-      created, entry = Entry.add(feed_id: self.id, entry: entry)
+    FeedParser.entries(url: url, from: from).each do |entry|
+      created, entry = Entry.add(feed_id: id, entry: entry)
       if created
-        count += 1 
+        count += 1
         entry.enrich
       end
     end
@@ -83,14 +83,14 @@ class Feed < ApplicationRecord
   end
 
   def async_import
-    ImportFeedWorker.perform_async(self.id)
+    ImportFeedWorker.perform_async(id)
   end
 
   def async_update
-    UpdateFeedWorker.perform_async(self.id)
+    UpdateFeedWorker.perform_async(id)
   end
 
   def language
-    self[:language].to_s.split("-")[0]
+    self[:language].to_s.split('-')[0]
   end
 end

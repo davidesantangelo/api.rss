@@ -9,6 +9,9 @@ class Entry < ApplicationRecord
   # scopes
   default_scope { order(created_at: :desc) }
 
+  scope :enriched, -> { where.not(enriched_at: nil) }
+  scope :newest, -> { where("created_at <= ?", 24.hours.ago) }
+
   # relations
   belongs_to :feed, counter_cache: true
 
@@ -18,7 +21,7 @@ class Entry < ApplicationRecord
   
   # class methods
   def self.add(feed_id: , entry: )
-    return [false, nil] if find_by(url: entry.url)
+    return [ false, nil ] if find_by(url: entry.url)
 
     attrs = {
       feed_id: feed_id,

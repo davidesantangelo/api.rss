@@ -14,9 +14,9 @@ class Log < ApplicationRecord
   def stop!(entries_count: nil)
     self.end_import_at = Time.current
     self.entries_count = entries_count
-    
+
     save!
-    
-    self.feed.update_attribute(:last_import_at, Time.current)
+
+    feed.update_attribute(:last_import_at, Time.current)
   end
 end
