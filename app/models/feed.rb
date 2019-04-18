@@ -52,7 +52,7 @@ class Feed < ApplicationRecord
       f.title = feed.title.to_s.strip
       f.description = feed.description.to_s.strip
       f.image = feed.try(:image)
-      f.language = feed.language
+      f.language = feed.try(:language)
     end
 
     feed.async_import
