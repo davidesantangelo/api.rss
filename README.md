@@ -56,6 +56,25 @@ FEEDS RSS (originally RDF Site Summary; later, two competing approaches emerged,
 RestClient.get "https://feedi.me/feeds", { Authorization: "Token #{TOKEN}" }
 ```
 
+```json
+{
+  "data": [
+    {
+      "id": "27c3f611-48e4-41fa-b0bb-c89bdda2db83",
+      "type": "feed",
+      "attributes": {
+        "title": "Apple Newsroom",
+        "description": "",
+        "url": "feed:https://www.apple.com/newsroom/rss-feed.rss",
+        "status": "enabled",
+        "entries_count": 20,
+        "last_import_at": 1555675203
+      }
+    }
+   ]
+ }
+```
+
 #### SHOW FEED
     
     # GET /feeds/:id
