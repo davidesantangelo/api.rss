@@ -30,7 +30,7 @@ RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKE
 ```
     
 #### RESPONSE
-``` javascript
+``` json
 {
   "data": {
     "id": "f1af9186-36a7-4320-b533-570d8944b2dd",
@@ -56,7 +56,7 @@ FEEDS RSS (originally RDF Site Summary; later, two competing approaches emerged,
 RestClient.get "https://feedi.me/feeds", { Authorization: "Token #{TOKEN}" }
 ```
 
-```javascript
+```json
 {
   "data": [
     {
@@ -125,7 +125,7 @@ RestClient.get "https://feedi.me/feeds/popular", { Authorization: "Token #{TOKEN
 RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{TOKEN}" }
 ```
 
-```javascript
+```json
 {
   "data": [
     {
