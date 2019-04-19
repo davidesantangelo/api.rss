@@ -11,8 +11,9 @@ Feedi API uses OAuth 2.0 token for user authorization and API authentication. Ap
 #### GET TOKEN
 
     # POST /tokens
-
-    RestClient.post "https://feedi.me/tokens", {}
+``` ruby
+RestClient.post "https://feedi.me/tokens", {}
+```
 
 #### REFRESH TOKEN
     
@@ -25,7 +26,7 @@ RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #
     
     # GET /tokens/current
 ``` ruby
-    RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKEN}" }
 ```
     
 #### RESPONSE
