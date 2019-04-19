@@ -54,8 +54,16 @@ FEEDS RSS (originally RDF Site Summary; later, two competing approaches emerged,
 
 ``` ruby
 RestClient.get "https://feedi.me/feeds", { Authorization: "Token #{TOKEN}" }
-
 ```
+
+#### SHOW FEED
+    
+    # GET /feeds/:id
+
+``` ruby
+RestClient.get "https://feedi.me/feeds/{id}", { Authorization: "Token #{TOKEN}" }
+```
+
 #### CREATE FEED
     
     # POST /feeds
@@ -63,7 +71,7 @@ RestClient.get "https://feedi.me/feeds", { Authorization: "Token #{TOKEN}" }
 ``` ruby
 payload = { url: "http://www.repubblica.it/rss/homepage/rss2.0.xml" }
 
-headers = { Authorization: "Token #{TOKEN}", content_type: :json, accept: :json}
+headers = { Authorization: "Token #{TOKEN}", content_type: :json, accept: :json }
 
 RestClient.post "https://feedi.me/feeds", payload.to_json, headers
     
