@@ -101,7 +101,6 @@ RestClient.get "https://feedi.me/feeds/{id}", { Authorization: "Token #{TOKEN}" 
     
 ``` ruby
 payload = { url: "http://www.repubblica.it/rss/homepage/rss2.0.xml" }
-
 headers = { Authorization: "Token #{TOKEN}", content_type: :json, accept: :json }
 
 RestClient.post "https://feedi.me/feeds", payload.to_json, headers
