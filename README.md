@@ -114,3 +114,74 @@ RestClient.post("https://feedi.me/feeds", payload, headers)
 ``` ruby
 RestClient.get "https://feedi.me/feeds/popular", { Authorization: "Token #{TOKEN}" }
 ```
+
+### ENTRY
+
+#### INDEX ENTRIES
+
+#### INDEX FEEDS
+    
+    # GET /feeds/:id/entries
+
+``` ruby
+RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{TOKEN}" }
+```
+
+```json
+{
+  "data": [
+    {
+      "id": "597b3b5a-f02a-4cd0-acfa-ac4d2d6e9abc",
+      "type": "entry",
+      "attributes": {
+        "title": "L’intelligenza artificiale come cambierà le nostre vite? La versione di Floridi",
+        "url": "https://corriereinnovazione.corriere.it/2019/04/18/intelligenza-artificiale-come-cambiera-nostre-vite-versione-floridi-ae636c64-61c6-11e9-bdff-f123a121117e.shtml",
+        "published_at": 1555593506,
+        "body": "Il docente di Filosofia ed Etica dell'informazione ad Oxford alla Colazione Digitale di Sorgenia: «il rischio è di crescere una generazione di pigri»",
+        "text": "Il docente di Filosofia ed Etica dell'informazione ad Oxford alla Colazione Digitale di Sorgenia: «il rischio è di crescere una generazione di pigri»",
+        "categories": [
+          "news"
+        ],
+        "tags": [
+          "filosofia",
+          "etica",
+          "informazione",
+          "oxford",
+          "sorgenia"
+        ]
+      },
+      "relationships": {
+        "feed": {
+          "data": {
+            "id": "91a333f3-37a1-497f-b34c-b0c99c9d35c1",
+            "type": "feed"
+          }
+        }
+      }
+    },
+    {
+      "id": "d5c8b047-8f5c-45c8-949a-07e05edc2705",
+      "type": "entry",
+      "attributes": {
+        "title": "Lo Stato investitore e la tentazionedel fondo Iri-tech",
+        "url": "https://corriereinnovazione.corriere.it/2019/03/06/stato-investitore-tentazione-392921d6-401b-11e9-bb83-aca868a1eb53.shtml",
+        "published_at": 1551886263,
+        "body": "Il piano del governo per finanziarie con un miliardo di euro il mondo delle start up  crea forti aspettative. Ma deve far parte di una visione più ampia dell’innovazione che  parte dall’istruzione, dalla formazione e dalla scienza  ",
+        "text": "Il piano del governo per finanziarie con un miliardo di euro il mondo delle start up  crea forti aspettative. Ma deve far parte di una visione più ampia dell’innovazione che  parte dall’istruzione, dalla formazione e dalla scienza",
+        "categories": [
+          "news"
+        ],
+        "tags": []
+      },
+      "relationships": {
+        "feed": {
+          "data": {
+            "id": "91a333f3-37a1-497f-b34c-b0c99c9d35c1",
+            "type": "feed"
+          }
+        }
+      }
+    }
+  ]
+}
+```
