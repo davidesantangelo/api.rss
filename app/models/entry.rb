@@ -30,7 +30,7 @@ class Entry < ApplicationRecord
       url: entry.url,
       external_id: entry.entry_id,
       categories: categories(entry: entry).map(&:downcase),
-      published_at: entry.published
+      published_at: entry.published || Time.current
     }
 
     entry = create!(attrs)

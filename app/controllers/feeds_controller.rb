@@ -1,6 +1,7 @@
 class FeedsController < BaseController
   # callbacks
   before_action :set_feed, only: [:show]
+  before_action :check_create_params, only: [:create]
 
   # GET /feeds
   def index
@@ -28,6 +29,13 @@ class FeedsController < BaseController
   end
 
   private
+
+  def check_create_params
+    unless feed_params[:url].present?
+      json_error_response('Validation Failed', 'missing URL param', :unprocessable_entity)
+      return
+    end
+  end
 
   def feed_params
     params.permit(:url)
