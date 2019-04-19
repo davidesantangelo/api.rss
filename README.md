@@ -108,7 +108,7 @@ RestClient.post "https://feedi.me/feeds", payload.to_json, headers
     
 ```
 
-#### INDEX FEEDS
+#### POPULAR FEEDS
     
     # GET /feeds/popular
 
