@@ -76,3 +76,11 @@ headers = { Authorization: "Token #{TOKEN}", content_type: :json, accept: :json 
 RestClient.post "https://feedi.me/feeds", payload.to_json, headers
     
 ```
+
+#### INDEX FEEDS
+    
+    # GET /feeds/popular
+
+``` ruby
+RestClient.get "https://feedi.me/feeds/popular", { Authorization: "Token #{TOKEN}" }
+```
