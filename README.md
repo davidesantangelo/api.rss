@@ -4,6 +4,25 @@ Feedi turn feed data into a fantastic API.
 
 Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep track of your favourite feed data with a simple and clean REST API.
 
+### ROUTES
+
+```ruby
+       popular_feeds GET  /feeds/popular(.:format)                   feeds#popular
+     tags_feed_entry GET  /feeds/:feed_id/entries/:id/tags(.:format) entries#tags
+        feed_entries GET  /feeds/:feed_id/entries(.:format)          entries#index
+          feed_entry GET  /feeds/:feed_id/entries/:id(.:format)      entries#show
+           feed_logs GET  /feeds/:feed_id/logs(.:format)             logs#index
+            feed_log GET  /feeds/:feed_id/logs/:id(.:format)         logs#show
+               feeds GET  /feeds(.:format)                           feeds#index
+                     POST /feeds(.:format)                           feeds#create
+                feed GET  /feeds/:id(.:format)                       feeds#show
+entries_search_index GET  /search/entries(.:format)                  search#entries
+  feeds_search_index GET  /search/feeds(.:format)                    search#feeds
+      current_tokens GET  /tokens/current(.:format)                  tokens#current
+      refresh_tokens POST /tokens/refresh(.:format)                  tokens#refresh
+              tokens POST /tokens(.:format)                          tokens#create
+ ```
+
 ### AUTHENTICATION
 
 Feedi API uses OAuth 2.0 token for user authorization and API authentication. Applications must be authorized and authenticated before they can fetch data.
