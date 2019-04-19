@@ -70,9 +70,21 @@ RestClient.get "https://feedi.me/feeds", { Authorization: "Token #{TOKEN}" }
         "entries_count": 20,
         "last_import_at": 1555675203
       }
+    },
+    {
+      "id": "923d5997-ce13-41d4-98ca-8feb8513cdd4",
+      "type": "feed",
+      "attributes": {
+        "title": "NYT > Technology",
+        "description": "",
+        "url": "http://feeds.nytimes.com/nyt/rss/Technology",
+        "status": "enabled",
+        "entries_count": 40,
+        "last_import_at": 1555675203
+      }
     }
-   ]
- }
+  ]
+}
 ```
 
 #### SHOW FEED
