@@ -4,7 +4,7 @@ Feedi turn feed data into a fantastic API.
 
 Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep track of your favourite feed data with a simple and clean REST API.
 
-### ROUTES
+## Routes
 
 ```ruby
        popular_feeds GET  /feeds/popular(.:format)                   feeds#popular
@@ -23,7 +23,7 @@ entries_search_index GET  /search/entries(.:format)                  search#entr
               tokens POST /tokens(.:format)                          tokens#create
  ```
 
-### AUTHENTICATION
+## Authentication
 
 Feedi API uses OAuth 2.0 token for user authorization and API authentication. Applications must be authorized and authenticated before they can fetch data.
 
@@ -41,7 +41,7 @@ RestClient.post "https://feedi.me/tokens", {}
 RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #{TOKEN}" }
 ```
 
-#### CURRENT TOKEN
+### CURRENT TOKEN
     
     # GET /tokens/current
 ``` ruby
@@ -63,7 +63,7 @@ RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKE
 }
 ```
 
-### FEEDS
+## Feeds
 
 FEEDS RSS (originally RDF Site Summary; later, two competing approaches emerged, which used the backronyms Rich Site Summary and Really Simple Syndication respectively) is a type of web feed which allows users and applications to access updates to online content in a standardized, computer-readable format.
 
@@ -134,7 +134,7 @@ RestClient.post("https://feedi.me/feeds", payload, headers)
 RestClient.get "https://feedi.me/feeds/popular", { Authorization: "Token #{TOKEN}" }
 ```
 
-### ENTRY
+## Entry
 
 #### INDEX ENTRIES
     
@@ -222,3 +222,10 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
   ]
 }
 ```
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
