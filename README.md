@@ -48,7 +48,7 @@ RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #
 RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKEN}" }
 ```
     
-#### RESPONSE
+#### RESPONSE ( get, refresh and current )
 ``` json
 {
   "data": {
