@@ -27,7 +27,7 @@ entries_search_index GET  /search/entries(.:format)                  search#entr
 
 Feedi API uses OAuth 2.0 token for user authorization and API authentication. Applications must be authorized and authenticated before they can fetch data.
 
-#### GET TOKEN
+#### GET TOKEN ( expires in 2 hours )
 
     # POST /tokens
 ``` ruby
