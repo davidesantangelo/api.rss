@@ -222,6 +222,21 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
   ]
 }
 ```
+
+## Search (with elastic)
+
+#### SEARCH ENTRIES
+
+``` ruby
+RestClient.get "https://feedi.me/search/entries?q={query}", { Authorization: "Token #{TOKEN}" }
+```
+
+#### SEARCH FEEDS
+
+``` ruby
+RestClient.get "https://feedi.me/search/feeds?q={query}", { Authorization: "Token #{TOKEN}" }
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
