@@ -21,7 +21,7 @@ class BaseController < ApplicationController
   end
 
   def ip_whitelisted?
-    IpWhitelist.enabled?(ip_address: request.remote_ip)
+    IpWhitelist.enabled?(ip_address: request.env['HTTP_X_REAL_IP'] || request.env['REMOTE_ADDR'])
   end
 
   def authenticate_token
