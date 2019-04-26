@@ -1,6 +1,4 @@
-<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7cfcafa1fccb4fd3b9eba2ae869415ed)](https://app.codacy.com/app/davide-santangelo/feedi?utm_source=github.com&utm_medium=referral&utm_content=davidesantangelo/feedi&utm_campaign=Badge_Grade_Dashboard)
+<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a> [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7cfcafa1fccb4fd3b9eba2ae869415ed)](https://app.codacy.com/app/davide-santangelo/feedi?utm_source=github.com&utm_medium=referral&utm_content=davidesantangelo/feedi&utm_campaign=Badge_Grade_Dashboard) <img src="https://img.shields.io/github/tag/davidesantangelo/feedi.svg" />
 
 # FEEDI
 
@@ -244,9 +242,98 @@ RestClient.get "https://feedi.me/search/entries?q={query}", { Authorization: "To
 RestClient.get "https://feedi.me/search/feeds?q={query}", { Authorization: "Token #{TOKEN}" }
 ```
 
+## Log
+
+Every time a feed is imported, everything is logged into logs table.
+
+
+#### INDEX LOGS
+
+    # GET /feeds/:feed_id/logs
+
+``` ruby
+RestClient.get "https://feedi.me/feeds/:feed_id/logs", { Authorization: "Token #{TOKEN}" }
+```
+
+```json
+{
+  "data": [
+    {
+      "id": "f357678b-3ede-41e6-bb2f-56f258a83ce8",
+      "type": "log",
+      "attributes": {
+        "start_import_at": "2019-04-17T14:54:15.183Z",
+        "end_import_at": "2019-04-17T14:54:33.106Z",
+        "entries_count": 52
+      },
+      "relationships": {
+        "feed": {
+          "data": {
+            "id": "63bb067a-049a-4a20-815d-c903cd35ed32",
+            "type": "feed"
+          }
+        }
+      }
+    },
+    {
+      "id": "b1b048ea-05da-4d51-a98b-0743ad772da8",
+      "type": "log",
+      "attributes": {
+        "start_import_at": "2019-04-18T08:00:02.750Z",
+        "end_import_at": "2019-04-18T08:00:13.625Z",
+        "entries_count": 23
+      },
+      "relationships": {
+        "feed": {
+          "data": {
+            "id": "63bb067a-049a-4a20-815d-c903cd35ed32",
+            "type": "feed"
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+#### SHOW LOG
+
+    # GET /feeds/:feed_id/logs/:id
+
+``` ruby
+RestClient.get "https://feedi.me/feeds/:feed_id/logs/:id", { Authorization: "Token #{TOKEN}" }
+```
+
+```json
+{
+  "data": {
+    "id": "f357678b-3ede-41e6-bb2f-56f258a83ce8",
+    "type": "log",
+    "attributes": {
+      "start_import_at": "2019-04-17T14:54:15.183Z",
+      "end_import_at": "2019-04-17T14:54:33.106Z",
+      "entries_count": 52
+    },
+    "relationships": {
+      "feed": {
+        "data": {
+          "id": "63bb067a-049a-4a20-815d-c903cd35ed32",
+          "type": "feed"
+        }
+      }
+    }
+  }
+}
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Services
+
+**Dandelion API:** Entity extraction and sentiment analysis are provided by Dandelion API. https://dandelion.eu.
+**ElasticSearch:** Search Engine provided by ElasticSearch API. https://www.elastic.co/products/elasticsearch
 
 ## License
 
