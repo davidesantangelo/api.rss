@@ -34,6 +34,7 @@ Feedi API uses OAuth 2.0 token for user authorization and API authentication. Ap
 #### GET TOKEN ( expires in 2 hours )
 
     # POST /tokens
+    
 ``` ruby
 RestClient.post "https://feedi.me/tokens", {}
 ```
