@@ -42,6 +42,7 @@ RestClient.post "https://feedi.me/tokens", {}
 #### REFRESH TOKEN
     
     # POST /tokens/refresh
+    
 ``` ruby
 RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #{TOKEN}" }
 ```
@@ -49,6 +50,7 @@ RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #
 #### CURRENT TOKEN
     
     # GET /tokens/current
+    
 ``` ruby
 RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKEN}" }
 ```
