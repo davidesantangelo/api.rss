@@ -4,7 +4,7 @@ class BaseController < ApplicationController
   include Serializer
   include Pagy::Backend
 
-  before_action :require_authentication
+  before_action :require_authentication, unless: :ip_whitelisted?
 
   def current_token
     @current_token ||= authenticate_token
@@ -18,6 +18,10 @@ class BaseController < ApplicationController
       
   def render_unauthorized(message)
     json_error_response(Response::ACCESS_TOKEN_EXCEPTION, message, :unauthorized)
+  end
+
+  def ip_whitelisted?
+    IpWhitelist.enabled?(ip_address: request.remote_ip)
   end
 
   def authenticate_token

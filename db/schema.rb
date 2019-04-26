@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_29_105748) do
+ActiveRecord::Schema.define(version: 2019_04_26_131231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(version: 2019_03_29_105748) do
     t.datetime "last_import_at"
     t.index ["categories"], name: "index_feeds_on_categories", using: :gin
     t.index ["url"], name: "index_feeds_on_url", unique: true
+  end
+
+  create_table "ip_whitelists", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "ip_address", limit: 16
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ip_address"], name: "index_ip_whitelists_on_ip_address", unique: true
   end
 
   create_table "logs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
