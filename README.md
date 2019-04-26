@@ -1,3 +1,6 @@
+<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
+
+
 # FEEDI
 
 Feedi turn feed data into a fantastic API.
@@ -27,7 +30,7 @@ entries_search_index GET  /search/entries(.:format)                  search#entr
 
 Feedi API uses OAuth 2.0 token for user authorization and API authentication. Applications must be authorized and authenticated before they can fetch data.
 
-#### GET TOKEN
+#### GET TOKEN ( expires in 2 hours )
 
     # POST /tokens
 ``` ruby
