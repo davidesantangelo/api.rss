@@ -6,7 +6,7 @@ module Response
   end
 
   def json_response_with_serializer(object, serializer, status = :ok)
-    render json: Object.const_get(serializer).new(object) 
+    render json: Object.const_get(serializer).new(object), status: status
   end
   
   def json_error_response(error_type, error_message, status)

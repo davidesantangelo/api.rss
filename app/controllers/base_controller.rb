@@ -21,7 +21,7 @@ class BaseController < ApplicationController
   end
 
   def authenticate_token
-    authenticate_with_http_token do |token, options|
+    authenticate_with_http_token do |token, _|
       if api_token = Token.active.find_by(key: token)
         # Compare the tokens in a time-constant manner, to mitigate timing attacks.
         ActiveSupport::SecurityUtils.secure_compare(

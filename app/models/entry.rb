@@ -41,12 +41,12 @@ class Entry < ApplicationRecord
   def self.categories(entry: )
     res = entry.try(:categories)
     res.to_a.join(",").split(",").flatten.map(&:strip)
-  rescue Exception
+  rescue StandardError
     []
   end
 
   # instance methods  
-  def as_indexed_json(options = {})
+  def as_indexed_json
     as_json(except: ['annotations', 'sentiment'])
   end
 
