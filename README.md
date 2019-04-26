@@ -293,6 +293,36 @@ RestClient.get "https://feedi.me/feeds/:feed_id/logs", { Authorization: "Token #
 }
 ```
 
+#### SHOW LOG
+
+    # GET /feeds/:feed_id/logs/:id
+
+``` ruby
+RestClient.get "https://feedi.me/feeds/:feed_id/logs/:id", { Authorization: "Token #{TOKEN}" }
+```
+
+```json
+{
+  "data": {
+    "id": "f357678b-3ede-41e6-bb2f-56f258a83ce8",
+    "type": "log",
+    "attributes": {
+      "start_import_at": "2019-04-17T14:54:15.183Z",
+      "end_import_at": "2019-04-17T14:54:33.106Z",
+      "entries_count": 52
+    },
+    "relationships": {
+      "feed": {
+        "data": {
+          "id": "63bb067a-049a-4a20-815d-c903cd35ed32",
+          "type": "feed"
+        }
+      }
+    }
+  }
+}
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
