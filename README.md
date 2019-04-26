@@ -244,6 +244,9 @@ RestClient.get "https://feedi.me/search/feeds?q={query}", { Authorization: "Toke
 
 ## Log
 
+Every time a feed is imported, everything is logged into logs table.
+
+
 #### INDEX LOGS
 
     # GET /feeds/:feed_id/logs
