@@ -21,7 +21,7 @@ class BaseController < ApplicationController
   end
 
   def ip_whitelisted?
-    IpWhitelist.enabled?(ip_address: request.ip)
+    IpWhitelist.enabled?(ip_address: request.env['HTTP_X_FORWARDED_FOR'])
   end
 
   def authenticate_token
