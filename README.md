@@ -248,9 +248,10 @@ RestClient.get "https://feedi.me/search/feeds?q={query}", { Authorization: "Toke
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-## Machine Learning
+## Services
 
-Entity extraction and sentiment analysis are provided by Dandelion API. https://dandelion.eu.
+Dandelion API: Entity extraction and sentiment analysis are provided by Dandelion API. https://dandelion.eu.
+ElasticSearch: Search Engine provided by ElasticSearch API. https://www.elastic.co/products/elasticsearch
 
 ## License
 
