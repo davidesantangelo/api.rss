@@ -291,7 +291,8 @@ RestClient.get "https://feedi.me/feeds/:feed_id/logs", { Authorization: "Token #
         }
       }
     }
-]
+  ]
+}
 ```
 
 ## Contributing
