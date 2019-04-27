@@ -18,6 +18,7 @@ class Entry < ApplicationRecord
   # validations
   validates :url, presence: true
   validates :title, presence: true
+  validates_uniqueness_of :url
   
   # class methods
   def self.add(feed_id: , entry: )
