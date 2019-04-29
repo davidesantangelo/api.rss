@@ -92,7 +92,8 @@ ActiveRecord::Schema.define(version: 2019_04_29_122649) do
     t.datetime "updated_at", null: false
     t.index ["events"], name: "index_webhook_endpoints_on_events", using: :gin
     t.index ["feed_id"], name: "index_webhook_endpoints_on_feed_id"
-    t.index ["url"], name: "index_webhook_endpoints_on_url", unique: true
+    t.index ["url", "feed_id"], name: "index_webhook_endpoints_on_url_and_feed_id", unique: true
+    t.index ["url"], name: "index_webhook_endpoints_on_url"
   end
 
   add_foreign_key "entries", "feeds"

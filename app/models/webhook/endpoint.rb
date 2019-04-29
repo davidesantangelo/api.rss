@@ -13,6 +13,7 @@ module Webhook
     # validations
     validates :url, presence: true, format: URI.regexp(%w(http https))
     validates :events, presence: true
+    validates :url, uniqueness: { scope: :feed }
 
     def self.for_event(events)
       where('events @> ARRAY[?]::varchar[]', Array(events))

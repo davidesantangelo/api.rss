@@ -4,4 +4,5 @@ module Serializer
   LOG = 'LogSerializer'
   TOKEN = 'TokenSerializer'
   TAG = 'TagSerializer'
+  WEBHOOK = 'WebhookSerializer'
 end

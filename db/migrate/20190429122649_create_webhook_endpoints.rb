@@ -7,7 +7,8 @@ class CreateWebhookEndpoints < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    add_index :webhook_endpoints, :url, unique: true
+    add_index :webhook_endpoints, :url
+    add_index :webhook_endpoints, [:url, :feed_id], unique: true
     add_index :webhook_endpoints, :events, using: 'gin'
   end
 end
