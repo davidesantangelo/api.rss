@@ -77,7 +77,7 @@ class Entry < ApplicationRecord
   private
 
   def webhook_scope
-    token
+    feed
   end
 
   def webhook_payload

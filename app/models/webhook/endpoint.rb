@@ -8,7 +8,7 @@ module Webhook
     attribute :events, :string, array: true, default: []
 
     # relations
-    belongs_to :token
+    belongs_to :feed
 
     # validations
     validates :url, presence: true, format: URI.regexp(%w(http https))
@@ -24,7 +24,7 @@ module Webhook
     end
 
     def deliver(event)
-      DeliveryWorker.perform_async(id, event.to_json)
+      Webhook::DeliveryWorker.perform_async(id, event.to_json)
     end
   end
 end

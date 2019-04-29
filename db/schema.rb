@@ -87,15 +87,15 @@ ActiveRecord::Schema.define(version: 2019_04_29_122649) do
   create_table "webhook_endpoints", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "url", null: false
     t.string "events", null: false, array: true
-    t.uuid "token_id", null: false
+    t.uuid "feed_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["events"], name: "index_webhook_endpoints_on_events", using: :gin
-    t.index ["token_id"], name: "index_webhook_endpoints_on_token_id"
+    t.index ["feed_id"], name: "index_webhook_endpoints_on_feed_id"
     t.index ["url"], name: "index_webhook_endpoints_on_url", unique: true
   end
 
   add_foreign_key "entries", "feeds"
   add_foreign_key "logs", "feeds"
-  add_foreign_key "webhook_endpoints", "tokens"
+  add_foreign_key "webhook_endpoints", "feeds"
 end
