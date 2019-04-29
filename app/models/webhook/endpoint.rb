@@ -11,10 +11,7 @@ module Webhook
     belongs_to :token
 
     # validations
-    validates :target_url,
-      presence: true,
-      format: URI.regexp(%w(http https))
-
+    validates :url, presence: true, format: URI.regexp(%w(http https))
     validates :events, presence: true
 
     def self.for_event(events)
@@ -27,7 +24,7 @@ module Webhook
     end
 
     def deliver(event)
-      Webhook::DeliveryWorker.perform_async(id, event.to_json)
+      DeliveryWorker.perform_async(id, event.to_json)
     end
   end
 end
