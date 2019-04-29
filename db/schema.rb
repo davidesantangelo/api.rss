@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_131231) do
+ActiveRecord::Schema.define(version: 2019_04_29_122649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -84,6 +84,18 @@ ActiveRecord::Schema.define(version: 2019_04_26_131231) do
     t.index ["key"], name: "index_tokens_on_key", unique: true
   end
 
+  create_table "webhook_endpoints", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "url", null: false
+    t.string "events", null: false, array: true
+    t.uuid "token_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["events"], name: "index_webhook_endpoints_on_events", using: :gin
+    t.index ["token_id"], name: "index_webhook_endpoints_on_token_id"
+    t.index ["url"], name: "index_webhook_endpoints_on_url", unique: true
+  end
+
   add_foreign_key "entries", "feeds"
   add_foreign_key "logs", "feeds"
+  add_foreign_key "webhook_endpoints", "tokens"
 end

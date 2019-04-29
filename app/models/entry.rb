@@ -1,6 +1,7 @@
 class Entry < ApplicationRecord
   extend Pagy::Search
   
+  include Webhook::Observable
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
   include ActionView::Helpers::SanitizeHelper
@@ -74,6 +75,14 @@ class Entry < ApplicationRecord
   end
 
   private
+
+  def webhook_scope
+    token
+  end
+
+  def webhook_payload
+    { entry: self }
+  end
 
   def get_annotations
     Service::Dandelion.annotations(text: self.text)
