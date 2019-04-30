@@ -161,6 +161,10 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
         "published_at": 1555664402,
         "body": "The rater has become the rated.",
         "text": "The rater has become the rated.",
+        "sentiment": {
+          "type": "positive",
+          "score": 0.6428571428571429
+        }, 
         "categories": [
           "consumer reviews",
           "computers and the internet",
@@ -189,6 +193,10 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
         "published_at": 1555664407,
         "body": "Hezbollah and other groups classified as terrorist organizations by the United States have changed their social media strategies to stay on Facebook, YouTube and Twitter.",
         "text": "Hezbollah and other groups classified as terrorist organizations by the United States have changed their social media strategies to stay on Facebook, YouTube and Twitter.",
+        "sentiment": {
+          "type": "negative",
+          "score": 0.7118571428441421
+        }, 
         "categories": [
           "terrorism",
           "social media",
