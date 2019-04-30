@@ -332,7 +332,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 ## Services
 
-**Dandelion API:** Entity extraction and sentiment analysis are provided by [Dandelion API](https://dandelion.eu)
+**Dandelion API:** Entity extraction and sentiment analysis are provided by [Dandelion API](https://dandelion.eu),
 **ElasticSearch:** Search Engine provided by [ElasticSearch API](https://www.elastic.co/products/elasticsearch)
 
 ## License
