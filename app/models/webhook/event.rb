@@ -15,7 +15,7 @@ module Webhook
 
     def as_json(*args)
       hash = payload.transform_values do |value|
-        serialize_resource(value)
+        serialize_resource(value).serialized_json
       end
 
       hash[:event_name] = event_name
@@ -25,10 +25,7 @@ module Webhook
     private
 
     def serialize_resource(resource)
-      case resource.class.name.to_s.downcase
-      when 'entry'
-        EntrySerializer.new(resource).serialized_json
-      end
+      "#{resource.class.name}Serializer".constantize.new(resource)
     end
   end
 end
