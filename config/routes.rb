@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       end
     end
     resources :logs, only: [:index, :show]
+    resources :webhooks
   end
 
   resources :search, only: '' do

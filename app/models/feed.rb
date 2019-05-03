@@ -13,7 +13,8 @@ class Feed < ApplicationRecord
   # relations
   has_many :entries, dependent: :destroy
   has_many :logs, dependent: :destroy
-
+  has_many :webhook_endpoints, class_name: 'Webhook::Endpoint'
+  
   # enums
   enum status: %i[enabled disabled]
 
