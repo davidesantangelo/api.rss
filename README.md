@@ -9,20 +9,26 @@ Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep t
 ## Routes
 
 ```ruby
-       popular_feeds GET  /feeds/popular(.:format)                   feeds#popular
-     tags_feed_entry GET  /feeds/:feed_id/entries/:id/tags(.:format) entries#tags
-        feed_entries GET  /feeds/:feed_id/entries(.:format)          entries#index
-          feed_entry GET  /feeds/:feed_id/entries/:id(.:format)      entries#show
-           feed_logs GET  /feeds/:feed_id/logs(.:format)             logs#index
-            feed_log GET  /feeds/:feed_id/logs/:id(.:format)         logs#show
-               feeds GET  /feeds(.:format)                           feeds#index
-                     POST /feeds(.:format)                           feeds#create
-                feed GET  /feeds/:id(.:format)                       feeds#show
-entries_search_index GET  /search/entries(.:format)                  search#entries
-  feeds_search_index GET  /search/feeds(.:format)                    search#feeds
-      current_tokens GET  /tokens/current(.:format)                  tokens#current
-      refresh_tokens POST /tokens/refresh(.:format)                  tokens#refresh
-              tokens POST /tokens(.:format)                          tokens#create
+       popular_feeds GET    /feeds/popular(.:format)                   feeds#popular
+     tags_feed_entry GET    /feeds/:feed_id/entries/:id/tags(.:format) entries#tags
+        feed_entries GET    /feeds/:feed_id/entries(.:format)          entries#index
+          feed_entry GET    /feeds/:feed_id/entries/:id(.:format)      entries#show
+           feed_logs GET    /feeds/:feed_id/logs(.:format)             logs#index
+            feed_log GET    /feeds/:feed_id/logs/:id(.:format)         logs#show
+       feed_webhooks GET    /feeds/:feed_id/webhooks(.:format)         webhooks#index
+                     POST   /feeds/:feed_id/webhooks(.:format)         webhooks#create
+        feed_webhook GET    /feeds/:feed_id/webhooks/:id(.:format)     webhooks#show
+                     PATCH  /feeds/:feed_id/webhooks/:id(.:format)     webhooks#update
+                     PUT    /feeds/:feed_id/webhooks/:id(.:format)     webhooks#update
+                     DELETE /feeds/:feed_id/webhooks/:id(.:format)     webhooks#destroy
+               feeds GET    /feeds(.:format)                           feeds#index
+                     POST   /feeds(.:format)                           feeds#create
+                feed GET    /feeds/:id(.:format)                       feeds#show
+entries_search_index GET    /search/entries(.:format)                  search#entries
+  feeds_search_index GET    /search/feeds(.:format)                    search#feeds
+      current_tokens GET    /tokens/current(.:format)                  tokens#current
+      refresh_tokens POST   /tokens/refresh(.:format)                  tokens#refresh
+              tokens POST   /tokens(.:format)                          tokens#create
  ```
 
 ## Authentication
