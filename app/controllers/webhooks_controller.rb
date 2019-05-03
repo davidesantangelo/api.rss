@@ -23,6 +23,13 @@ class WebhooksController < BaseController
     json_response_with_serializer(@webhook, Serializer::WEBHOOK)
   end
 
+  # PATCH/PUT /feeds/:id/webhooks/:id
+  def update
+    @webhook = @feed.webhook_endpoints.update(webhook_params)
+
+    json_response_with_serializer(@webhook, Serializer::WEBHOOK)
+  end
+
   # DELETE /feeds/:id/webhooks
   def destroy
     @webhook.destroy
