@@ -13,7 +13,7 @@ module Webhook
       @payload = payload
     end
 
-    def as_json
+    def as_json(*args)
       hash = payload.transform_values do |value|
         serialize_resource(value).serialized_json
       end
