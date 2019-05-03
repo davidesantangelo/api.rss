@@ -27,6 +27,9 @@ class Feed < ApplicationRecord
     url = url.gsub('feed://', '').gsub('feed:', '').strip
 
     Feedjira::Feed.parse(RestClient.get(url).body)
+  rescue Feedjira::NoParserAvailable
+    Rails.logger.error(e)
+    nil
   rescue URI::InvalidURIError => e
     Rails.logger.error(e)
     nil
@@ -34,7 +37,7 @@ class Feed < ApplicationRecord
     Rails.logger.error(e)
     nil
   end
-
+  
   def self.recent(limit: 50)
     unscoped.newest.limit(limit)
   end
