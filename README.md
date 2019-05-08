@@ -5,7 +5,7 @@
 
 Feedi turn feed data into a fantastic API.
 
-Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep track of your favourite feed data with a simple and clean REST API.
+Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep track of your favourite feed data with a simple and clean REST API. All entries are enriched by Machine Learning and Semantic engines.
 
 ## Search Engine
 
