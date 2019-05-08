@@ -232,6 +232,8 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (2.19.3)
+      multi_json
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.2)
@@ -337,6 +339,7 @@ DEPENDENCIES
   rbnacl (>= 5.0)
   rbnacl-libsodium
   rest-client
+  rollbar
   rspec-rails (~> 3.8)
   selenium-webdriver
   sidekiq
