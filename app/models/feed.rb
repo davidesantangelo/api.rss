@@ -13,7 +13,8 @@ class Feed < ApplicationRecord
   # relations
   has_many :entries, dependent: :destroy
   has_many :logs, dependent: :destroy
-
+  has_many :webhook_endpoints, class_name: 'Webhook::Endpoint'
+  
   # enums
   enum status: %i[enabled disabled]
 
@@ -27,6 +28,9 @@ class Feed < ApplicationRecord
     url = url.gsub('feed://', '').gsub('feed:', '').strip
 
     Feedjira::Feed.parse(RestClient.get(url).body)
+  rescue Feedjira::NoParserAvailable
+    Rails.logger.error(e)
+    nil
   rescue URI::InvalidURIError => e
     Rails.logger.error(e)
     nil
@@ -34,7 +38,7 @@ class Feed < ApplicationRecord
     Rails.logger.error(e)
     nil
   end
-
+  
   def self.recent(limit: 50)
     unscoped.newest.limit(limit)
   end

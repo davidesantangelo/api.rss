@@ -29,7 +29,7 @@ module Feedi
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
-        resource '*', headers: :any, methods: [:get, :post, :options]
+        resource '*', headers: :any, methods: [:get, :post, :options], expose: ['Current-Page', 'Total', 'Per-Page', 'Link']
       end
     end
 

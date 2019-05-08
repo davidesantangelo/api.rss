@@ -1,4 +1,4 @@
-<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a> [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7cfcafa1fccb4fd3b9eba2ae869415ed)](https://app.codacy.com/app/davide-santangelo/feedi?utm_source=github.com&utm_medium=referral&utm_content=davidesantangelo/feedi&utm_campaign=Badge_Grade_Dashboard) <img src="https://img.shields.io/github/tag/davidesantangelo/feedi.svg" />
+<a href="https://codeclimate.com/github/codeclimate/codeclimate/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a> [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7cfcafa1fccb4fd3b9eba2ae869415ed)](https://app.codacy.com/app/davide-santangelo/feedi?utm_source=github.com&utm_medium=referral&utm_content=davidesantangelo/feedi&utm_campaign=Badge_Grade_Dashboard) <img src="https://img.shields.io/github/tag/davidesantangelo/feedi.svg" /> <a href="https://github.com/eonu/arx/blob/master/LICENSE"><img src="https://camo.githubusercontent.com/ad562cdf422b103f1a409db66ba31cb79414594d/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f656f6e752f6172782e737667" alt="License" data-canonical-src="https://img.shields.io/github/license/eonu/arx.svg" style="max-width:100%;"></a>
 
 # FEEDI
 
@@ -9,20 +9,26 @@ Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep t
 ## Routes
 
 ```ruby
-       popular_feeds GET  /feeds/popular(.:format)                   feeds#popular
-     tags_feed_entry GET  /feeds/:feed_id/entries/:id/tags(.:format) entries#tags
-        feed_entries GET  /feeds/:feed_id/entries(.:format)          entries#index
-          feed_entry GET  /feeds/:feed_id/entries/:id(.:format)      entries#show
-           feed_logs GET  /feeds/:feed_id/logs(.:format)             logs#index
-            feed_log GET  /feeds/:feed_id/logs/:id(.:format)         logs#show
-               feeds GET  /feeds(.:format)                           feeds#index
-                     POST /feeds(.:format)                           feeds#create
-                feed GET  /feeds/:id(.:format)                       feeds#show
-entries_search_index GET  /search/entries(.:format)                  search#entries
-  feeds_search_index GET  /search/feeds(.:format)                    search#feeds
-      current_tokens GET  /tokens/current(.:format)                  tokens#current
-      refresh_tokens POST /tokens/refresh(.:format)                  tokens#refresh
-              tokens POST /tokens(.:format)                          tokens#create
+       popular_feeds GET    /feeds/popular(.:format)                   feeds#popular
+     tags_feed_entry GET    /feeds/:feed_id/entries/:id/tags(.:format) entries#tags
+        feed_entries GET    /feeds/:feed_id/entries(.:format)          entries#index
+          feed_entry GET    /feeds/:feed_id/entries/:id(.:format)      entries#show
+           feed_logs GET    /feeds/:feed_id/logs(.:format)             logs#index
+            feed_log GET    /feeds/:feed_id/logs/:id(.:format)         logs#show
+       feed_webhooks GET    /feeds/:feed_id/webhooks(.:format)         webhooks#index
+                     POST   /feeds/:feed_id/webhooks(.:format)         webhooks#create
+        feed_webhook GET    /feeds/:feed_id/webhooks/:id(.:format)     webhooks#show
+                     PATCH  /feeds/:feed_id/webhooks/:id(.:format)     webhooks#update
+                     PUT    /feeds/:feed_id/webhooks/:id(.:format)     webhooks#update
+                     DELETE /feeds/:feed_id/webhooks/:id(.:format)     webhooks#destroy
+               feeds GET    /feeds(.:format)                           feeds#index
+                     POST   /feeds(.:format)                           feeds#create
+                feed GET    /feeds/:id(.:format)                       feeds#show
+entries_search_index GET    /search/entries(.:format)                  search#entries
+  feeds_search_index GET    /search/feeds(.:format)                    search#feeds
+      current_tokens GET    /tokens/current(.:format)                  tokens#current
+      refresh_tokens POST   /tokens/refresh(.:format)                  tokens#refresh
+              tokens POST   /tokens(.:format)                          tokens#create
  ```
 
 ## Authentication
@@ -161,6 +167,10 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
         "published_at": 1555664402,
         "body": "The rater has become the rated.",
         "text": "The rater has become the rated.",
+        "sentiment": {
+          "type": "positive",
+          "score": 0.6428571428571429
+        }, 
         "categories": [
           "consumer reviews",
           "computers and the internet",
@@ -189,6 +199,10 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
         "published_at": 1555664407,
         "body": "Hezbollah and other groups classified as terrorist organizations by the United States have changed their social media strategies to stay on Facebook, YouTube and Twitter.",
         "text": "Hezbollah and other groups classified as terrorist organizations by the United States have changed their social media strategies to stay on Facebook, YouTube and Twitter.",
+        "sentiment": {
+          "type": "negative",
+          "score": 0.7118571428441421
+        }, 
         "categories": [
           "terrorism",
           "social media",
@@ -332,7 +346,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 ## Services
 
-**Dandelion API:** Entity extraction and sentiment analysis are provided by [Dandelion API](https://dandelion.eu)
+**Dandelion API:** Entity extraction and sentiment analysis are provided by [Dandelion API](https://dandelion.eu),
 **ElasticSearch:** Search Engine provided by [ElasticSearch API](https://www.elastic.co/products/elasticsearch)
 
 ## License
