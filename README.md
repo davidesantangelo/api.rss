@@ -202,6 +202,9 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
           "data": {
             "id": "923d5997-ce13-41d4-98ca-8feb8513cdd4",
             "type": "feed"
+          },
+          "links": {
+            "related": "http://www.rss.com/rss/homepage/rss2.0.xml"
           }
         }
       }
@@ -250,6 +253,9 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
           "data": {
             "id": "923d5997-ce13-41d4-98ca-8feb8513cdd4",
             "type": "feed"
+          },
+          "links": {
+            "related": "http://www.rss.it/rss/homepage/rss4.0.xml"
           }
         }
       }
