@@ -18,5 +18,5 @@ test:
 
 production:
   <<: *default
-  pool: 10
+  pool: 20
   database: feedi_production
