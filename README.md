@@ -37,6 +37,15 @@ entries_search_index GET    /search/entries(.:format)                  search#en
       refresh_tokens POST   /tokens/refresh(.:format)                  tokens#refresh
               tokens POST   /tokens(.:format)                          tokens#create
  ```
+## Pagination
+
+Requests that return multiple items will be paginated to 20 items by default. You can specify further pages with the ```?page``` parameter. Pagination informations are available inside **headers**. Example:
+
+```
+Per-Page: 20
+Link: <https://feedi.me/search/entries?q=<q>&page=1>; rel="first", <https://feedi.me/search/entries?q=<q>&page=2>; rel="next", <https://feedi.me/search/entries?q=<q>&page=24>; rel="last"
+Total: 464
+```
 
 ## Authentication
 
