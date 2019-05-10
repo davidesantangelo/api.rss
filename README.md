@@ -366,6 +366,12 @@ RestClient.get "https://feedi.me/feeds/:feed_id/logs/:id", { Authorization: "Tok
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/feedi#backer)]
+
+<a href="https://opencollective.com/feedi#backers" target="_blank"><img src="https://opencollective.com/feedi/backers.svg?width=890"></a>
+
 ## Services
 
 **Dandelion API:** Entity extraction and sentiment analysis are provided by [Dandelion API](https://dandelion.eu),
