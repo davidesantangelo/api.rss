@@ -11,9 +11,9 @@ Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep t
 
 ## Search Engine
 
-Little search engine developed in React around this API. Take a look at [search.feedi.me](http://search.feedi.me).
+Take a look at [search.feedi.me](http://search.feedi.me) for a little search engine developed in React around this API. 
 
-Feedbacks are welcome at [github repo](https://github.com/davidesantangelo/search.feedi.me)
+Feedback is welcome on [its repository](https://github.com/davidesantangelo/search.feedi.me).
 
 ## Routes
 
@@ -41,7 +41,7 @@ entries_search_index GET    /search/entries(.:format)                  search#en
  ```
 ## Pagination
 
-Requests that return multiple items will be paginated to 20 items by default. You can specify further pages with the ```?page``` parameter. Pagination informations are available inside **headers**. Example:
+Requests that return multiple items will be paginated to 20 items by default. You can specify further pages with the ```?page``` parameter. Pagination information is available inside **headers**. Example:
 
 ```
 Per-Page: 20
@@ -94,7 +94,7 @@ RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKE
 
 ## Feeds
 
-FEEDS RSS (originally RDF Site Summary; later, two competing approaches emerged, which used the backronyms Rich Site Summary and Really Simple Syndication respectively) is a type of web feed which allows users and applications to access updates to online content in a standardized, computer-readable format.
+*RSS is a type of web feed which allows users and applications to access updates to online content in a standardized, computer-readable format* — [RSS Wiki](https://en.wikipedia.org/wiki/RSS).
 
 #### INDEX FEEDS
     
@@ -366,17 +366,18 @@ RestClient.get "https://feedi.me/feeds/:feed_id/logs/:id", { Authorization: "Tok
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/davidesantangelo/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Backers
 
-Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/feedi#backer)]
+Thank you to all our backers! 🙏 [Become a backer](https://opencollective.com/feedi#backer).
 
 <a href="https://opencollective.com/feedi#backers" target="_blank"><img src="https://opencollective.com/feedi/backers.svg?width=890"></a>
 
 ## Services
 
-**Dandelion API:** Entity extraction and sentiment analysis are provided by [Dandelion API](https://dandelion.eu),
+**Dandelion API:** Entity extraction and sentiment analysis are provided by [Dandelion API](https://dandelion.eu)
+
 **ElasticSearch:** Search Engine provided by [ElasticSearch API](https://www.elastic.co/products/elasticsearch)
 
 ## License
