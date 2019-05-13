@@ -8,7 +8,7 @@ class SearchController < BaseController
         query: {
           multi_match: {
             query:    params[:q], 
-            fields: [ "title", "body^2", "url^3" ] 
+            fields: [ "title^3", "body^2", "url", "categories" ] 
           }
         }
       }
