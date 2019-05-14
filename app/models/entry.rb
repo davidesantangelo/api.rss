@@ -27,7 +27,7 @@ class Entry < ApplicationRecord
 
     attrs = {
       feed_id: feed_id,
-      title: entry.title || 'no title',
+      title: entry.title.blank? ? 'untitled' : entry.title,
       body: entry.summary,
       url: entry.url,
       external_id: entry.entry_id,
