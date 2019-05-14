@@ -24,6 +24,7 @@ class Entry < ApplicationRecord
   # class methods
   def self.add(feed_id: , entry: )
     return [ false, nil ] if find_by(url: entry.url)
+    return [ false, nil ] if find_by(external_id: entry.entry_id)
 
     attrs = {
       feed_id: feed_id,
