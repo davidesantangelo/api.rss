@@ -5,12 +5,12 @@ module Searchable
     include Elasticsearch::Model
 
     after_commit(
-      lambda ->  { __elasticsearch__.index_document  },
+      lambda { __elasticsearch__.index_document  },
       on: [:create, :update],
     )
 
     after_commit(
-      lambda ->  { __elasticsearch__.delete_document },
+      lambda { __elasticsearch__.delete_document },
       on: :destroy,
     )
 
