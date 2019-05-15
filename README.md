@@ -76,7 +76,7 @@ RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #
 ``` ruby
 RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKEN}" }
 ```
-    
+
 #### RESPONSE ( get, refresh and current )
 ``` json
 {
