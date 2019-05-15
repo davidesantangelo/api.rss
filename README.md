@@ -21,8 +21,9 @@ Feedback is welcome on [its repository](https://github.com/davidesantangelo/sear
 - [PostgreSQL](https://www.postgresql.org/) &mdash; Our main data store is in Postgres.
 - [Redis](https://redis.io/) &mdash; We use Redis as a cache and for transient data.
 - [Feedjira](https://github.com/feedjira/feedjira) Feedjira is a Ruby library designed to parse feeds.
-- [ElasticSearch](https://www.elastic.co/products/elasticsearch) Elasticsearch is a distributed, RESTful search and analytics engine 
-- [Dandelion](https://dandelion.eu) Semantic Text Analytics as a service
+- [ElasticSearch](https://www.elastic.co/products/elasticsearch) Elasticsearch is a distributed, RESTful search and analytics engine.
+- [Dandelion](https://dandelion.eu) Semantic Text Analytics as a service.
+- [Sidekiq](http://sidekiq.org) Simple, efficient background processing for Ruby.
 
 Plus *lots* of Ruby Gems, a complete list of which is at [/master/Gemfile](https://github.com/davidesantangelo/feedi/blob/master/Gemfile).
 
