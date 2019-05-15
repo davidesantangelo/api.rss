@@ -15,6 +15,17 @@ Take a look at [search.feedi.me](http://search.feedi.me) for a little search eng
 
 Feedback is welcome on [its repository](https://github.com/davidesantangelo/search.feedi.me).
 
+## Built With
+
+- [Ruby on Rails](https://github.com/rails/rails) &mdash; Our back end API is a Rails app. It responds to requests RESTfully in JSON.
+- [PostgreSQL](https://www.postgresql.org/) &mdash; Our main data store is in Postgres.
+- [Redis](https://redis.io/) &mdash; We use Redis as a cache and for transient data.
+- [Feedjira](https://github.com/feedjira/feedjira) Feedjira is a Ruby library designed to parse feeds.
+- [ElasticSearch](https://www.elastic.co/products/elasticsearch) Elasticsearch is a distributed, RESTful search and analytics engine 
+- [Dandelion](https://dandelion.eu) Semantic Text Analytics as a service
+
+Plus *lots* of Ruby Gems, a complete list of which is at [/master/Gemfile](https://github.com/davidesantangelo/feedi/blob/master/Gemfile).
+
 ## Routes
 
 ```ruby
@@ -373,12 +384,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/davide
 Thank you to all our backers! 🙏 [Become a backer](https://opencollective.com/feedi#backer).
 
 <a href="https://opencollective.com/feedi#backers" target="_blank"><img src="https://opencollective.com/feedi/backers.svg?width=890"></a>
-
-## Services
-
-**Dandelion API:** Entity extraction and sentiment analysis are provided by [Dandelion API](https://dandelion.eu)
-
-**ElasticSearch:** Search Engine provided by [ElasticSearch API](https://www.elastic.co/products/elasticsearch)
 
 ## License
 
