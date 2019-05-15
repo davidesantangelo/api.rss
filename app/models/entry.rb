@@ -49,7 +49,7 @@ class Entry < ApplicationRecord
   end
 
   # instance methods  
-  def as_indexed_json(options = {})
+  def as_indexed_json(_options = {})
     as_json(except: ['annotations'])
   end
 
