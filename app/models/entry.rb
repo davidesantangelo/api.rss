@@ -54,9 +54,17 @@ class Entry < ApplicationRecord
   end
 
   def tags
-    return [] if self.annotations.to_a.blank?
-
-    self.annotations.to_a.map { |a| a['title'].downcase }.uniq
+    return [] unless self.annotations.present?
+    
+    self.annotations.to_a.map do |annotation|
+      {
+        uri: annotation.dig('uri'),
+        spot: annotation.dig('spot'),
+        label: annotation.dig('label'),
+        confidence: annotation.dig('confidence'),
+        categories: annotation.dig('categories')
+      }
+    end
   end
 
   def text
