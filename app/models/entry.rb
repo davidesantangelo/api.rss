@@ -56,7 +56,7 @@ class Entry < ApplicationRecord
   def tags
     return [] unless self.annotations.present?
     
-    self.annotations.to_a.map do |annotation|
+    self.annotations.uniq { |a| a[:id] }.map do |annotation|
       {
         uri: annotation.dig('uri'),
         spot: annotation.dig('spot'),
