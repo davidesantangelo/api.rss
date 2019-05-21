@@ -24,6 +24,7 @@ Feedback is welcome on [its repository](https://github.com/davidesantangelo/sear
 - [ElasticSearch](https://www.elastic.co/products/elasticsearch) Elasticsearch is a distributed, RESTful search and analytics engine.
 - [Dandelion](https://dandelion.eu) Semantic Text Analytics as a service.
 - [Sidekiq](http://sidekiq.org) Simple, efficient background processing for Ruby.
+- [Fast JSON API](https://github.com/Netflix/fast_jsonapi) A lightning fast JSON:API serializer for Ruby Objects.
 
 Plus *lots* of Ruby Gems, a complete list of which is at [/master/Gemfile](https://github.com/davidesantangelo/feedi/blob/master/Gemfile).
 
