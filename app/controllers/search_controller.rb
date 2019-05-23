@@ -14,9 +14,9 @@ class SearchController < BaseController
         }
       }
 
-    @pagy, @entries = pagy_elasticsearch_rails(Entry.pagy_search(payload))
+    @pagy, @entries = pagy_elasticsearch_rails(Entry.pagy_search(payload).records)
 
-    json_response_with_serializer(@entries.records, Serializer::ENTRY)
+    json_response_with_serializer(@entries, Serializer::ENTRY)
   end
 
   def feeds
@@ -25,14 +25,14 @@ class SearchController < BaseController
         query: {
           multi_match: {
             query:    params[:q], 
-            fields: [ "title", "description^2" ] 
+            fields: [ "title^10", "description^2" ] 
           }
         }
       }
 
-    @pagy, @feeds = pagy_elasticsearch_rails(Feed.pagy_search(payload))
+    @pagy, @feeds = pagy_elasticsearch_rails(Feed.pagy_search(payload).records)
 
-    json_response_with_serializer(@feeds.records, Serializer::FEED)
+    json_response_with_serializer(@feeds, Serializer::FEED)
   end
 
   private
