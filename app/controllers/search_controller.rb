@@ -1,6 +1,7 @@
 class SearchController < BaseController
   # callbacks
   before_action :check_params
+  skip_before_action :require_authentication, only: [:entries]
 
   def entries
     payload =  
@@ -8,7 +9,7 @@ class SearchController < BaseController
         query: {
           multi_match: {
             query:    params[:q], 
-            fields: [ "title^3", "body^2", "url", "categories" ] 
+            fields: [ "title^4", "body", "url^10", "categories" ] 
           }
         }
       }

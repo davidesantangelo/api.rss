@@ -30,4 +30,6 @@ Rails.application.routes.draw do
       post :refresh
     end
   end
+
+  resources :stats, only: [:index]
 end

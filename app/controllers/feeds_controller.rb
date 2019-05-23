@@ -18,7 +18,10 @@ class FeedsController < BaseController
   # POST /feeds
   def create
     @feed = Feed.add(url: feed_params[:url])
+
     json_response_with_serializer(@feed, Serializer::FEED)
+  rescue StandardError => e
+    json_error_response('CreateFeedError', e.message, :internal_server_error)
   end
 
   # GET /feeds/popular

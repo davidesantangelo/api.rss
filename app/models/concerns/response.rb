@@ -1,8 +1,8 @@
 module Response
   ACCESS_TOKEN_EXCEPTION = 'AccessTokenException'
   
-  def json_success_response
-    render json: {}, status: :ok
+  def json_success_response(object = {})
+    render json: object, status: :ok
   end
 
   def json_response_with_serializer(object, serializer, status = :ok)
