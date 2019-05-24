@@ -1,5 +1,5 @@
 class Importer
-  def self.run(limit: 50)
+  def self.run(limit: 1000)
     Feed.unscoped.all.order("last_import_at ASC NULLS FIRST").limit(limit).find_each do |feed|
       feed.async_update
     end

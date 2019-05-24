@@ -25,10 +25,10 @@ class Feed < ApplicationRecord
 
   # class methods
   def self.parse(url:)
-    url = url.gsub('feed://', '').gsub('feed:', '').strip
+    url = url.gsub('feed://', '').gsub('feed:', '').strip.downcase
 
     Feedjira::Feed.parse(RestClient.get(url).body)
-  rescue Feedjira::NoParserAvailable
+  rescue Feedjira::NoParserAvailable => e
     Rails.logger.error(e)
     nil
   rescue URI::InvalidURIError => e
@@ -59,7 +59,7 @@ class Feed < ApplicationRecord
       f.language = feed.try(:language)
     end
 
-    feed.async_import
+    feed.async_import if feed.present?
 
     feed
   end
