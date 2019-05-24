@@ -1,5 +1,5 @@
 class Entry < ApplicationRecord
-  searchkick
+  searchkick, settings: { index: { max_result_window: 100000 } }
   
   extend Pagy::Search
   
