@@ -1,5 +1,5 @@
 require 'w3c_validators'
-require 'pagy/extras/elasticsearch_rails'
+require 'pagy/extras/searchkick'
 
 class ApplicationRecord < ActiveRecord::Base  
   self.abstract_class = true
