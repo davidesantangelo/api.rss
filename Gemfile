@@ -41,6 +41,7 @@ gem 'pagy'
 gem 'rack-cors', require: 'rack/cors'
 gem 'rest-client'
 gem 'rollbar'
+gem 'searchkick'
 gem 'sidekiq'
 gem 'w3c_validators'
 gem 'whenever', require: false

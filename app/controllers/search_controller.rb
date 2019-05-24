@@ -4,33 +4,15 @@ class SearchController < BaseController
   skip_before_action :require_authentication, only: [:entries]
 
   def entries
-    payload =  
-      {
-        query: {
-          multi_match: {
-            query:    params[:q], 
-            fields: [ "title^4", "body", "url^10", "categories" ] 
-          }
-        }
-      }
-
-    @pagy, @entries = pagy_elasticsearch_rails(Entry.pagy_search(payload).records)
+    entries = Entry.pagy_search(params[:q], fields: [ "title^10", "body", "url^2", "categories" ]).results
+    @pagy, @entries = pagy_searchkick(entries)
 
     json_response_with_serializer(@entries, Serializer::ENTRY)
   end
 
   def feeds
-    payload =  
-      {
-        query: {
-          multi_match: {
-            query:    params[:q], 
-            fields: [ "title^10", "description^2" ] 
-          }
-        }
-      }
-
-    @pagy, @feeds = pagy_elasticsearch_rails(Feed.pagy_search(payload).records)
+    feeds = Feed.pagy_search(params[:q], fields: [ "title^10", "description", "url^2" ]).results
+    @pagy, @feeds = pagy_searchkick(feeds)
 
     json_response_with_serializer(@feeds, Serializer::FEED)
   end

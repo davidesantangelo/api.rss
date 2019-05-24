@@ -1,9 +1,9 @@
 class Entry < ApplicationRecord
+  searchkick
+  
   extend Pagy::Search
   
   include Webhook::Observable
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
   include ActionView::Helpers::SanitizeHelper
   include Searchable
 

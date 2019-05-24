@@ -1,4 +1,4 @@
-require 'pagy/extras/elasticsearch_rails'
+require 'pagy/extras/searchkick'
 require 'pagy/extras/headers'
 
 class ApplicationController < ActionController::API
