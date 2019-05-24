@@ -25,6 +25,7 @@ Feedback is welcome on [its repository](https://github.com/davidesantangelo/sear
 - [Dandelion](https://dandelion.eu) Semantic Text Analytics as a service.
 - [Sidekiq](http://sidekiq.org) Simple, efficient background processing for Ruby.
 - [FastJSONAPI](https://github.com/Netflix/fast_jsonapi) A lightning fast JSON:API serializer for Ruby Objects.
+- [Searchkick](https://github.com/ankane/searchkick) Intelligent search made easy.
 
 Plus *lots* of Ruby Gems, a complete list of which is at [/master/Gemfile](https://github.com/davidesantangelo/feedi/blob/master/Gemfile).
 
