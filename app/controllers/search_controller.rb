@@ -4,7 +4,7 @@ class SearchController < BaseController
   skip_before_action :require_authentication, only: [:entries]
 
   def entries
-    boost_by_recency = { created_at: { scale: "7d", decay: 0.5 } }
+    boost_by_recency = { created_at: { scale: "4d", decay: 0.5 } }
     fields = [ "title^10", "body", "url^2", "categories" ]
 
     entries = Entry.pagy_search(params[:q], boost_by_recency: boost_by_recency, fields: fields).results
