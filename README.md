@@ -29,6 +29,12 @@ Feedback is welcome on [its repository](https://github.com/davidesantangelo/sear
 
 Plus *lots* of Ruby Gems, a complete list of which is at [/master/Gemfile](https://github.com/davidesantangelo/feedi/blob/master/Gemfile).
 
+## Buy me a coffee
+
+If you want to support me in server costs to leave Feedi online, consider buying me a coffee! Thanks!
+
+<a href="https://www.buymeacoffee.com/582rhJH" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
 ## Routes
 
 ```ruby
@@ -381,12 +387,6 @@ RestClient.get "https://feedi.me/feeds/:feed_id/logs/:id", { Authorization: "Tok
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/davidesantangelo/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
-## Buy me a coffee
-
-If you want to support me in server costs to leave Feedi online, consider buying me a coffee! Thanks!
-
-<a href="https://www.buymeacoffee.com/582rhJH" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
 ## License
 
