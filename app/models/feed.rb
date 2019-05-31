@@ -33,10 +33,10 @@ class Feed < ApplicationRecord
     nil
   rescue URI::InvalidURIError => e
     Rails.logger.error(e)
-    nil
+    raise e
   rescue RestClient::ExceptionWithResponse => e
     Rails.logger.error(e)
-    nil
+    raise e
   end
   
   def self.recent(limit: 50)
