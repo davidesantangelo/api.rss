@@ -1,6 +1,6 @@
 class FeedSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :title, :description, :url, :status, :entries_count, :last_import_at
+  attributes :title, :description, :url, :status, :entries_count, :last_import_at, :rank
 
   attribute :last_import_at do |object|
     object.last_import_at.present? ? object.last_import_at.to_i : nil
