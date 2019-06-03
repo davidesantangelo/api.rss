@@ -18,7 +18,7 @@ class SearchController < BaseController
   def feeds
     fields = [ "title^8", "description", "url^4" ]
 
-    feeds = Feed.pagy_search(params[:q], boost_by: [:entries_count], fields: fields).results
+    feeds = Feed.pagy_search(params[:q], boost_by: [:entries_count, :rank], fields: fields).results
     @pagy, @feeds = pagy_searchkick(feeds)
 
     json_response_with_serializer(@feeds, Serializer::FEED)
