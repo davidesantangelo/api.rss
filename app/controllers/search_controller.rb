@@ -5,7 +5,7 @@ class SearchController < BaseController
 
   def entries
     boost_by_recency = { created_at: { scale: "4d", decay: 0.5 } }
-    fields = [ "title^10", "body", "url^2", "categories" ]
+    fields = [ "title^8", "body^2", "url^4", "categories" ]
 
     entries = Entry.pagy_search(params[:q], where: build_filters, boost_by_recency: boost_by_recency, order: build_order, fields: fields).results
     @pagy, @entries = pagy_searchkick(entries)
@@ -16,7 +16,7 @@ class SearchController < BaseController
   end
 
   def feeds
-    fields = [ "title^10", "description", "url^2" ]
+    fields = [ "title^8", "description", "url^4" ]
 
     feeds = Feed.pagy_search(params[:q], boost_by: [:entries_count], fields: fields).results
     @pagy, @feeds = pagy_searchkick(feeds)
