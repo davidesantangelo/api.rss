@@ -25,9 +25,7 @@ class Feed < ApplicationRecord
 
   # class methods
   def self.parse(url:)
-    url = url.gsub('feed://', '').gsub('feed:', '').strip
-
-    Feedjira::Feed.parse(RestClient.get(url).body)
+    Feedjira::Feed.parse(RestClient.get(cleaned_url(url)).body)
   rescue Feedjira::NoParserAvailable => e
     Rails.logger.error(e)
     nil
@@ -94,7 +92,11 @@ class Feed < ApplicationRecord
   end
 
   def domain
-    PublicSuffix.domain(URI.parse(url).host) rescue nil
+    PublicSuffix.domain(URI.parse(cleaned_url(url)).host) rescue nil
+  end
+
+  def cleaned_url(url)
+    url.gsub('feed://', '').gsub('feed:', '').strip
   end
 
   def async_import
