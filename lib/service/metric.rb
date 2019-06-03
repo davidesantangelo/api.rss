@@ -3,7 +3,7 @@ module Service
     API_URL = "https://api.openrank.io//"
 
     def self.rank(domain)
-      api(domain: domain).dig('data', domain, 'openrank').to_i  
+      api(domain: domain).dig('data', domain, 'openrank').to_f
     end
 
     private
