@@ -1,6 +1,7 @@
 class EntrySerializer
   include FastJsonapi::ObjectSerializer
-  attributes :title, :url, :published_at, :body, :text, :categories, :sentiment
+  belongs_to :feed
+  attributes :title, :url, :published_at, :body, :text, :categories, :sentiment, :parent
   
   attribute :text do |object|
     object.text
@@ -10,13 +11,16 @@ class EntrySerializer
     object.tags
   end
 
+  attribute :parent do |object|
+    {
+      id: object.feed.id,
+      title: object.feed.title,
+      url: object.feed.url,
+      rank: object.feed.rank
+    }
+  end
+
   attribute :published_at do |object|
     object.published_at.to_i
   end
-
-  belongs_to :feed, links: {
-    related: -> (object) {
-      object.feed.url
-    }
-  }
 end

@@ -13,7 +13,7 @@ module Service
       response = api(action: 'nex', payload: payload)
       response.fetch('annotations', nil)
     rescue RestClient::ExceptionWithResponse => e
-      e.response
+      Rails.logger.error e.response
       nil 
     end
 
@@ -26,15 +26,20 @@ module Service
       response = api(action: 'sent', payload: payload)
       response.fetch('sentiment', nil)
     rescue RestClient::ExceptionWithResponse => e
-      e.response
+      Rails.logger.error e.response
       nil 
     end
 
 
     def self.api(action: , payload: {})
-      response = RestClient.post "#{API_URL}datatxt/#{action}/v1/?", payload
+      response = RestClient::Request.execute(
+        method: :post, 
+        url: "#{API_URL}datatxt/#{action}/v1/?", 
+        payload: payload, 
+        timeout: 10
+      )
+
       response = JSON.parse(response.body)
-      
       response
     end
   end

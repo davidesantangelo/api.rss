@@ -59,7 +59,8 @@ class Feed < ApplicationRecord
       f.language = feed.try(:language)
     end
 
-    feed.async_import if feed.present?
+    feed.enrich
+    feed.async_import
 
     feed
   end
@@ -84,6 +85,16 @@ class Feed < ApplicationRecord
     end
 
     log.stop!(entries_count: count)
+  end
+
+  def enrich
+    self.rank = Service::Metric.rank(domain)
+
+    save!
+  end
+
+  def domain
+    PublicSuffix.domain(URI.parse(url).host) rescue nil
   end
 
   def async_import
