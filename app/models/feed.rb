@@ -93,11 +93,12 @@ class Feed < ApplicationRecord
   end
 
   def domain
-    PublicSuffix.domain(URI.parse(cleaned_url(url)).host) rescue nil
-  end
+    url = self.url.gsub('feed://', '').gsub('feed:', '').strip
+    url = "http://#{url}" if URI.parse(url).scheme.nil?
 
-  def cleaned_url(url)
-    url.gsub('feed://', '').gsub('feed:', '').strip
+    PublicSuffix.domain(URI.parse(url).host)
+  rescue StandardError
+    nil
   end
 
   def async_import
