@@ -25,7 +25,8 @@ class Feed < ApplicationRecord
 
   # class methods
   def self.parse(url:)
-    Feedjira::Feed.parse(RestClient.get(self.class.cleaned_url(url)).body)
+    url = url.gsub('feed://', '').gsub('feed:', '').strip
+    Feedjira::Feed.parse(RestClient.get(url).body)
   rescue Feedjira::NoParserAvailable => e
     Rails.logger.error(e)
     nil
