@@ -87,7 +87,7 @@ class Feed < ApplicationRecord
   end
 
   def enrich
-    domain_rank = Service::Metric.rank(domain)
+    domain_rank = Service::Metric.rank(domain).abs
 
     #(LOG10(domain_rank) / MAX(LOG10(rank))) * 100
     self.rank = ((Math::log10(domain_rank) / Math::log10(Feed.maximum(:rank))) * 100).round
