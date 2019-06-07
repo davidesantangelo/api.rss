@@ -1,5 +1,6 @@
-<a href="https://codeclimate.com/github/davidesantangelo/feedi/maintainability"><img src="https://api.codeclimate.com/v1/badges/e84db3d81a5e9935d63a/maintainability" /></a> <img src="https://img.shields.io/github/tag/davidesantangelo/feedi.svg"/> <a href="https://github.com/eonu/arx/blob/master/LICENSE"><img src="https://camo.githubusercontent.com/ad562cdf422b103f1a409db66ba31cb79414594d/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f656f6e752f6172782e737667" alt="License" data-canonical-src="https://img.shields.io/github/license/eonu/arx.svg" style="max-width:100%;"></a> [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/davidesantangelo/feedi/issues) [![Open Source Helpers](https://www.codetriage.com/davidesantangelo/feedi/badges/users.svg)](https://www.codetriage.com/davidesantangelo/feedi)
+<a href="https://codeclimate.com/github/davidesantangelo/feedi/maintainability"> <img src="https://api.codeclimate.com/v1/badges/e84db3d81a5e9935d63a/maintainability" /></a> <img src="https://img.shields.io/github/tag/davidesantangelo/feedi.svg"/> <a href="https://github.com/eonu/arx/blob/master/LICENSE"><img src="https://camo.githubusercontent.com/ad562cdf422b103f1a409db66ba31cb79414594d/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f656f6e752f6172782e737667" alt="License" data-canonical-src="https://img.shields.io/github/license/eonu/arx.svg" style="max-width:100%;"></a> [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/davidesantangelo/feedi/issues) [![Open Source Helpers](https://www.codetriage.com/davidesantangelo/feedi/badges/users.svg)](https://www.codetriage.com/davidesantangelo/feedi)
  <img src="https://img.shields.io/github/languages/top/davidesantangelo/feedi.svg"/>
+ <a href="#backers" alt="sponsors on Open Collective"><img src="https://opencollective.com/feedi/backers/badge.svg" /></a> <a href="#sponsors" alt="Sponsors on Open Collective"><img src="https://opencollective.com/feedi/sponsors/badge.svg" /></a>
 
 
 
@@ -387,6 +388,36 @@ RestClient.get "https://feedi.me/feeds/:feed_id/logs/:id", { Authorization: "Tok
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/davidesantangelo/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Contributors
+
+This project exists thanks to all the people who contribute. 
+<a href="https://github.com/davidesantangelo/feedi/graphs/contributors"><img src="https://opencollective.com/feedi/contributors.svg?width=890&button=false" /></a>
+
+
+## Backers
+
+Thank you to all our backers! 🙏 [[Become a backer](https://opencollective.com/feedi#backer)]
+
+<a href="https://opencollective.com/feedi#backers" target="_blank"><img src="https://opencollective.com/feedi/backers.svg?width=890"></a>
+
+
+## Sponsors
+
+Support this project by becoming a sponsor. Your logo will show up here with a link to your website. [[Become a sponsor](https://opencollective.com/feedi#sponsor)]
+
+<a href="https://opencollective.com/feedi/sponsor/0/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/0/avatar.svg"></a>
+<a href="https://opencollective.com/feedi/sponsor/1/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/1/avatar.svg"></a>
+<a href="https://opencollective.com/feedi/sponsor/2/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/2/avatar.svg"></a>
+<a href="https://opencollective.com/feedi/sponsor/3/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/3/avatar.svg"></a>
+<a href="https://opencollective.com/feedi/sponsor/4/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/4/avatar.svg"></a>
+<a href="https://opencollective.com/feedi/sponsor/5/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/5/avatar.svg"></a>
+<a href="https://opencollective.com/feedi/sponsor/6/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/6/avatar.svg"></a>
+<a href="https://opencollective.com/feedi/sponsor/7/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/7/avatar.svg"></a>
+<a href="https://opencollective.com/feedi/sponsor/8/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/8/avatar.svg"></a>
+<a href="https://opencollective.com/feedi/sponsor/9/website" target="_blank"><img src="https://opencollective.com/feedi/sponsor/9/avatar.svg"></a>
+
+
 
 ## License
 
