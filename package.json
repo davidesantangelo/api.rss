@@ -1,15 +1,4 @@
 {
   "name": "feedi",
-  "private": true,
-  "dependencies": {
-    "opencollective-postinstall": "^2.0.2",
-    "opencollective": "^1.0.3"
-  },
-  "collective": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/feedi"
-  },
-  "scripts": {
-    "postinstall": "opencollective-postinstall"
-  }
+  "private": true
 }
