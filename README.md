@@ -78,7 +78,7 @@ Feedi API uses OAuth 2.0 token for user authorization and API authentication. Ap
     # POST /tokens
     
 ``` ruby
-RestClient.post "https://feedi.me/tokens", {}
+RestClient.post "https://yourdomain.com/tokens", {}
 ```
 
 #### REFRESH TOKEN
@@ -86,7 +86,7 @@ RestClient.post "https://feedi.me/tokens", {}
     # POST /tokens/refresh
     
 ``` ruby
-RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #{TOKEN}" }
+RestClient.post "https://yourdomain.com/tokens/refresh", {}, { Authorization: "Token #{TOKEN}" }
 ```
 
 #### CURRENT TOKEN
@@ -94,7 +94,7 @@ RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #
     # GET /tokens/current
     
 ``` ruby
-RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://yourdomain.com/tokens/current", { Authorization: "Token #{TOKEN}" }
 ```
 
 #### RESPONSE ( get, refresh and current )
@@ -121,7 +121,7 @@ RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKE
     # GET /feeds
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://yourdomain.com/feeds", { Authorization: "Token #{TOKEN}" }
 ```
 
 ```json
@@ -160,7 +160,7 @@ RestClient.get "https://feedi.me/feeds", { Authorization: "Token #{TOKEN}" }
     # GET /feeds/:id
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/{id}", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://yourdomain.com/feeds/{id}", { Authorization: "Token #{TOKEN}" }
 ```
 
 #### CREATE FEED
@@ -172,7 +172,7 @@ payload = { url: "http://www.repubblica.it/rss/homepage/rss2.0.xml" }.to_json
 
 headers = { Authorization: "Token #{TOKEN}", content_type: :json, accept: :json }
 
-RestClient.post("https://feedi.me/feeds", payload, headers)
+RestClient.post("https://yourdomain.come/feeds", payload, headers)
 ```
 
 #### POPULAR FEEDS
@@ -180,7 +180,7 @@ RestClient.post("https://feedi.me/feeds", payload, headers)
     # GET /feeds/popular
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/popular", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://yourdomain.com/feeds/popular", { Authorization: "Token #{TOKEN}" }
 ```
 
 ## Entry
@@ -190,7 +190,7 @@ RestClient.get "https://feedi.me/feeds/popular", { Authorization: "Token #{TOKEN
     # GET /feeds/:id/entries
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://yourdomain.com/feeds/:id/entries", { Authorization: "Token #{TOKEN}" }
 ```
 
 ```json
@@ -291,13 +291,13 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
 #### SEARCH ENTRIES
 
 ``` ruby
-RestClient.get "https://feedi.me/search/entries?q={query}", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://yourdomain.com/search/entries?q={query}", { Authorization: "Token #{TOKEN}" }
 ```
 
 #### SEARCH FEEDS
 
 ``` ruby
-RestClient.get "https://feedi.me/search/feeds?q={query}", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://yourdomain.com/search/feeds?q={query}", { Authorization: "Token #{TOKEN}" }
 ```
 
 ## Log
@@ -310,7 +310,7 @@ Every time a feed is imported, everything is logged into logs table.
     # GET /feeds/:feed_id/logs
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/:feed_id/logs", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://yourdomain.com/feeds/:feed_id/logs", { Authorization: "Token #{TOKEN}" }
 ```
 
 ```json
@@ -359,7 +359,7 @@ RestClient.get "https://feedi.me/feeds/:feed_id/logs", { Authorization: "Token #
     # GET /feeds/:feed_id/logs/:id
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/:feed_id/logs/:id", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://yourdomain.com/feeds/:feed_id/logs/:id", { Authorization: "Token #{TOKEN}" }
 ```
 
 ```json
