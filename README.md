@@ -65,7 +65,7 @@ Requests that return multiple items will be paginated to 20 items by default. Yo
 
 ```
 Per-Page: 20
-Link: <https://feedi.me/search/entries?q=<q>&page=1>; rel="first", <https://feedi.me/search/entries?q=<q>&page=2>; rel="next", <https://feedi.me/search/entries?q=<q>&page=24>; rel="last"
+Link: <https://yourdomain.com/search/entries?q=<q>&page=1>; rel="first", <https://yourdomain.com/search/entries?q=<q>&page=2>; rel="next", <https://yourdomain.com/search/entries?q=<q>&page=24>; rel="last"
 Total: 464
 ```
 
