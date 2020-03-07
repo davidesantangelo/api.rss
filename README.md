@@ -13,6 +13,8 @@ Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep t
 
 Take a look at a little search engine developed in React around this API. 
 
+www.datorss.com
+
 Feedback is welcome on [its repository](https://github.com/davidesantangelo/search.feedi.me).
 
 ## Built With
