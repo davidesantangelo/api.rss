@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TokensController < BaseController
   skip_before_action :require_authentication, only: [:create]
 

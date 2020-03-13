@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Token < ApplicationRecord
   # callbacks
   before_create :generate_key
-  
+
   # scopes
   scope :active, -> { where(active: true).where('expires_at IS NULL OR expires_at >= ?', Time.current) }
   scope :expired, -> { where.not(expires_at: nil).where('expires_at < ?', Time.current) }

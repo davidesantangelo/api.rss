@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Webhook
   module Delivery
     extend ActiveSupport::Concern

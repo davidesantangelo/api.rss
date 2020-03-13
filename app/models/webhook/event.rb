@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 module Webhook
   class Event
-    EVENT_TYPES = %w(
+    EVENT_TYPES = %w[
       entry_created
       entry_updated
       entry_destroyed
-    ).freeze
+    ].freeze
 
     attr_reader :event_name, :payload
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Webhook
   class Endpoint < ApplicationRecord
     def self.table_name_prefix
@@ -11,7 +13,7 @@ module Webhook
     belongs_to :feed
 
     # validations
-    validates :url, presence: true, format: URI.regexp(%w(http https))
+    validates :url, presence: true, format: URI.regexp(%w[http https])
     validates :events, presence: true
     validates :url, uniqueness: { scope: :feed }
 

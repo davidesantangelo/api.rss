@@ -1,8 +1,8 @@
+# frozen_string_literal: true
+
 class Importer
   def self.run(limit: 1000)
-    Feed.unscoped.all.order("last_import_at ASC NULLS FIRST").limit(limit).find_each do |feed|
-      feed.async_update
-    end
+    Feed.unscoped.all.order('last_import_at ASC NULLS FIRST').limit(limit).find_each(&:async_update)
   end
 
   def self.reload(feed:)

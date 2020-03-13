@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class LogsController < BaseController
   # callbacks
   before_action :set_feed
@@ -5,7 +7,7 @@ class LogsController < BaseController
 
   # GET /feeds/:id/logs.json
   def index
-    @pagy, logs = pagy Log.where(feed_id: params[:feed_id]) 
+    @pagy, logs = pagy Log.where(feed_id: params[:feed_id])
 
     json_response_with_serializer(logs, Serializer::LOG)
   end
