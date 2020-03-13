@@ -33,8 +33,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'elasticsearch-dsl',   github: 'elasticsearch/elasticsearch-ruby'
-gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails'
-gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails'
+gem 'elasticsearch-model', github: 'elastic/elasticsearch-rails', branch: '6.x'
+gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'fast_jsonapi'
 gem 'feedjira'
 gem 'figaro'

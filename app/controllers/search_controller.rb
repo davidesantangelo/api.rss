@@ -14,6 +14,7 @@ class SearchController < BaseController
 
     json_response_with_serializer(@entries, Serializer::ENTRY)
   rescue StandardError => e
+    Rails.logger.error(e)
     json_error_response('SearchEntriesError', e.message, 500)
   end
 
@@ -25,6 +26,7 @@ class SearchController < BaseController
 
     json_response_with_serializer(@feeds, Serializer::FEED)
   rescue StandardError => e
+    Rails.logger.error(e)
     json_error_response('SearchFeedsError', e.message, 500)
   end
 

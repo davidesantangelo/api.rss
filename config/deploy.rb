@@ -1,4 +1,4 @@
-server 'feedi.me', user: 'deploy', roles: %w{app db web}
+server 'static.86.148.203.116.clients.your-server.de', user: 'deploy', roles: %w{app db web}
 
 set :application, "feedi"
 set :repo_url, "git@github.com:davidesantangelo/feedi.git"

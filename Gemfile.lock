@@ -1,12 +1,13 @@
 GIT
   remote: https://github.com/elastic/elasticsearch-rails.git
-  revision: 589fd76f7eb388f5fcc1c4c4b854a47298e6dac6
+  revision: 97862b5baa8a79030103fd2758b8d374439b8f68
+  branch: 6.x
   specs:
-    elasticsearch-model (7.0.0)
+    elasticsearch-model (6.1.0)
       activesupport (> 3)
-      elasticsearch (> 1)
+      elasticsearch (~> 6)
       hashie
-    elasticsearch-rails (7.0.0)
+    elasticsearch-rails (6.1.0)
 
 GIT
   remote: https://github.com/elasticsearch/elasticsearch-ruby.git
@@ -109,12 +110,12 @@ GEM
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
     ed25519 (1.2.4)
-    elasticsearch (7.5.0)
-      elasticsearch-api (= 7.5.0)
-      elasticsearch-transport (= 7.5.0)
-    elasticsearch-api (7.5.0)
+    elasticsearch (6.8.1)
+      elasticsearch-api (= 6.8.1)
+      elasticsearch-transport (= 6.8.1)
+    elasticsearch-api (6.8.1)
       multi_json
-    elasticsearch-transport (7.5.0)
+    elasticsearch-transport (6.8.1)
       faraday (>= 0.14, < 1)
       multi_json
     erubi (1.9.0)
@@ -231,7 +232,7 @@ GEM
     rollbar (2.24.0)
     rspec-core (3.9.1)
       rspec-support (~> 3.9.1)
-    rspec-expectations (3.9.0)
+    rspec-expectations (3.9.1)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-mocks (3.9.1)
