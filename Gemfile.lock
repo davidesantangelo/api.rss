@@ -334,7 +334,7 @@ DEPENDENCIES
   public_suffix
   puma (~> 3.11)
   rack-cors
-  rails (~> 5.2.4.2)
+  rails (~> 5.2.3)
   rails-controller-testing
   rbnacl (>= 5.0)
   rbnacl-libsodium
