@@ -15,7 +15,53 @@ Take a look at a little search engine developed in React around this API.
 
 www.datorss.com
 
-Feedback is welcome on [its repository](https://github.com/davidesantangelo/search.feedi.me).
+Feedback is welcome on [its repository](https://github.com/davidesantangelo/datorss).
+
+
+## Example
+
+``` json
+
+GET https://api.feedirss.com/search/entries?q=rails
+
+{
+  "data": [
+    {
+      "id": "9237e923-db08-4070-8952-719a796f911a",
+      "type": "entry",
+      "attributes": {
+        "title": "larrycameron80 forked larrycameron80/datorss from davidesantangelo/datorss",
+        "url": "https://github.com/larrycameron80/datorss",
+        "published_at": 1586916098,
+        "body": null,
+        "text": "larrycameron80 forked larrycameron80/datorss from davidesantangelo/datorss",
+        "categories": [],
+        "sentiment": {
+          "type": "neutral",
+          "score": 0.0
+        },
+        "parent": {
+          "id": "7bebbfa1-2aab-4078-b137-467c65a8ea11",
+          "title": "Private Feed for davidesantangelo",
+          "url": "feed:https://github.com/davidesantangelo.private.atom?token=AAIZRI6MMQ2CHEVULORFWUV237TOA",
+          "rank": 99.0
+        },
+        "tags": []
+      },
+      "relationships": {
+        "feed": {
+          "data": {
+            "id": "7bebbfa1-2aab-4078-b137-467c65a8ea11",
+            "type": "feed"
+          }
+        }
+      }
+    },
+  ]
+}
+
+```
+
 
 ## Built With
 
