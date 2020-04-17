@@ -3,7 +3,7 @@
 
 
 
-# FEEDI
+# FeediRSS
 
 Feedi turns feed data into a fantastic API.
 
