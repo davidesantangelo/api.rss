@@ -1,7 +1,7 @@
 server 'static.86.148.203.116.clients.your-server.de', user: 'deploy', roles: %w{app db web}
 
 set :application, "feedi"
-set :repo_url, "git@github.com:davidesantangelo/feedi.git"
+set :repo_url, "git@github.com:davidesantangelo/feedirss-api.git"
 
 # Deploy to the user's home directory
 set :deploy_to, "/home/deploy/#{fetch :application}"
