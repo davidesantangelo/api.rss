@@ -6,10 +6,10 @@ class WelcomeController < BaseController
   def index
     response =
       {
-        "name": 'Feedi',
-        "description": 'This service allows you to transform RSS feed into an awesome API.',
-        "version": '0.1',
-        "github_repo_url": 'https://github.com/davidesantangelo/feedi',
+        "name": 'FeediRSS',
+        "description": 'RSS as RESTful. This service allows you to transform RSS feed into an awesome API.',
+        "version": '0.6',
+        "github_repo_url": 'https://github.com/davidesantangelo/feedirss-api',
         "author": {
           "name": 'Davide Santangelo',
           "website": 'https://www.davidesantangelo.com'
