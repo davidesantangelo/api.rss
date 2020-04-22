@@ -5,17 +5,14 @@ class TokensController < BaseController
 
   # POST /tokens
   def create
-    @token = Token.create!(expires_at: 2.hours.since)
+    @token = Token.create!(expires_at: Token::EXPIRATION_TIME.since)
 
     json_response_with_serializer(@token, Serializer::TOKEN)
   end
 
   # POST /tokens/refresh
   def refresh
-    if current_token.expires_at.present?
-      current_token.expires_at = 2.hours.since
-      current_token.save
-    end
+    current_token.refresh!
 
     json_response_with_serializer(current_token, Serializer::TOKEN)
   end

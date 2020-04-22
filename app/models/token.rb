@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Token < ApplicationRecord
+  EXPIRATION_TIME = 2.hours
+
   # callbacks
   before_create :generate_key
 
@@ -10,6 +12,14 @@ class Token < ApplicationRecord
 
   def self.expire!
     expired.update_all(active: false)
+  end
+
+  def refresh!
+    return unless expires_at.present?
+
+    self.expires_at = EXPIRATION_TIME.since
+
+    save!
   end
 
   protected
