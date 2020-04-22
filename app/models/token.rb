@@ -22,6 +22,10 @@ class Token < ApplicationRecord
     save!
   end
 
+  def never_expires?
+    expires_at.nil?
+  end
+
   protected
 
   def generate_key
