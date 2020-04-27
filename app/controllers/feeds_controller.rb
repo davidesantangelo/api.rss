@@ -36,13 +36,6 @@ class FeedsController < BaseController
 
   private
 
-  def check_token_authorization
-    return if current_token.never_expires?
-
-    json_error_response('Unauthorized Token', 'your token is not qualified to perform this action.', :unauthorized)
-    nil
-  end
-
   def check_create_params
     return if feed_params[:url].present?
 

@@ -7,7 +7,7 @@ class SearchController < BaseController
 
   def entries
     boost_by_recency = { created_at: { scale: '4d', decay: 0.5 } }
-    fields = ['title^8', 'body^2', 'url^4', 'categories']
+    fields = ['title^8', 'body^3', 'url^4', 'categories']
 
     entries = Entry.pagy_search(params[:q], where: build_filters, boost_by_recency: boost_by_recency, order: build_order, fields: fields).results
     @pagy, @entries = pagy_searchkick(entries)
@@ -66,7 +66,6 @@ class SearchController < BaseController
 
     if entries_params[:order].present? && !%w[asc desc].include?(entries_params[:order])
       json_error_response('Validation Failed', 'order param must be asc/desc', :unprocessable_entity)
-      return
     end
   end
 end

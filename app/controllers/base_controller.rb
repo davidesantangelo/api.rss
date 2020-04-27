@@ -26,6 +26,12 @@ class BaseController < ApplicationController
     IpWhitelist.enabled?(ip_address: request.remote_ip)
   end
 
+  def check_token_authorization
+    return if current_token&.permanent?
+
+    json_error_response('Unauthorized Token', 'your token is not qualified to perform this action.', :unauthorized)
+  end
+
   def authenticate_token
     authenticate_with_http_token do |token, _|
       if api_token = Token.active.find_by(key: token)
