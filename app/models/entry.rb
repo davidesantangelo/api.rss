@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class Entry < ApplicationRecord
-  searchkick settings: { index: { max_result_window: 110000 } }
-  
+  searchkick settings: { index: { max_result_window: 110_000 } }
+
   extend Pagy::Search
-  
+
   include Webhook::Observable
   include ActionView::Helpers::SanitizeHelper
   include Searchable
@@ -11,7 +13,7 @@ class Entry < ApplicationRecord
   default_scope { order(created_at: :desc) }
 
   scope :enriched, -> { where.not(enriched_at: nil) }
-  scope :newest, -> { where("created_at <= ?", 24.hours.ago) }
+  scope :newest, -> { where('created_at <= ?', 24.hours.ago) }
 
   # relations
   belongs_to :feed, counter_cache: true
@@ -20,10 +22,10 @@ class Entry < ApplicationRecord
   validates :url, presence: true
   validates :title, presence: true
   validates_uniqueness_of :url
-  
+
   # class methods
-  def self.add(feed_id: , entry: )
-    return [ false, nil ] if find_by(url: entry.url)
+  def self.add(feed_id:, entry:)
+    return [false, nil] if find_by(url: entry.url)
 
     attrs = {
       feed_id: feed_id,
@@ -40,22 +42,22 @@ class Entry < ApplicationRecord
     [true, entry]
   end
 
-  def self.categories(entry: )
+  def self.categories(entry:)
     res = entry.try(:categories)
-    res.to_a.join(",").split(",").flatten.map(&:strip)
+    res.to_a.join(',').split(',').flatten.map(&:strip)
   rescue StandardError
     []
   end
 
-  # instance methods  
+  # instance methods
   def as_indexed_json(_options = {})
     as_json(except: ['annotations'])
   end
 
   def tags
-    return [] unless self.annotations.present?
-    
-    self.annotations.uniq { |h| h['id'] }.map do |annotation|
+    return [] unless annotations.present?
+
+    annotations.uniq { |h| h['id'] }.map do |annotation|
       {
         uri: annotation.dig('uri'),
         spot: annotation.dig('spot'),
@@ -79,7 +81,7 @@ class Entry < ApplicationRecord
     self.annotations = annotations
     self.sentiment = sentiment
     self.enriched_at = Time.current
-    
+
     save!
   end
 
@@ -94,10 +96,10 @@ class Entry < ApplicationRecord
   end
 
   def get_annotations
-    Service::Dandelion.annotations(text: self.text)
+    Service::Dandelion.annotations(text: text)
   end
 
   def get_sentiment
-    Service::Dandelion.sentiment(text: self.text)
+    Service::Dandelion.sentiment(text: text)
   end
 end

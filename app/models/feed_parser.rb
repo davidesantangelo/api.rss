@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
 class FeedParser
   def self.entries(url:, from: nil)
-    results = Feed.parse(url: url).entries rescue []
+    results = begin
+                Feed.parse(url: url).entries
+              rescue StandardError
+                []
+              end
 
     if from.present?
       results.select do |entry|

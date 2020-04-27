@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class EntriesController < BaseController
   # callbacks
   before_action :set_feed
-  before_action :set_feed_entry, only: [:show, :tags]
+  before_action :set_feed_entry, only: %i[show tags]
 
   # GET /feeds/:id/entries.json
   def index
-    @pagy, entries = pagy Entry.where(feed_id: params[:feed_id]) 
+    @pagy, entries = pagy Entry.where(feed_id: params[:feed_id])
 
     json_response_with_serializer(entries, Serializer::ENTRY)
   end

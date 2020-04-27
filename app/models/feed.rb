@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Feed < ApplicationRecord
   searchkick
 
@@ -5,7 +7,7 @@ class Feed < ApplicationRecord
 
   include W3CValidators
   include Searchable
-  
+
   # scopes
   default_scope { order(created_at: :desc) }
   scope :newest, -> { enabled.where('created_at <= ?', 24.hours.ago) }
@@ -14,7 +16,7 @@ class Feed < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :logs, dependent: :destroy
   has_many :webhook_endpoints, class_name: 'Webhook::Endpoint'
-  
+
   # enums
   enum status: %i[enabled disabled]
 
@@ -22,12 +24,11 @@ class Feed < ApplicationRecord
   validates :url, presence: true
   validates :title, presence: true
   validates_associated :entries
-
+  
   # class methods
   def self.parse(url:)
     url = url.gsub('feed://', '').gsub('feed:', '').strip
-
-    Feedjira::Feed.parse(RestClient.get(url).body)
+    Feedjira.parse(RestClient.get(url).body)
   rescue Feedjira::NoParserAvailable => e
     Rails.logger.error(e)
     nil
@@ -38,7 +39,11 @@ class Feed < ApplicationRecord
     Rails.logger.error(e)
     raise e
   end
-  
+
+  def self.avg_rank
+    all.average(:rank).to_f.round(2)
+  end
+
   def self.recent(limit: 50)
     unscoped.newest.limit(limit)
   end
@@ -59,7 +64,8 @@ class Feed < ApplicationRecord
       f.language = feed.try(:language)
     end
 
-    feed.async_import if feed.present?
+    feed.enrich
+    feed.async_import
 
     feed
   end
@@ -84,6 +90,23 @@ class Feed < ApplicationRecord
     end
 
     log.stop!(entries_count: count)
+  end
+
+  def enrich
+    domain_rank = Service::Metric.rank(domain).abs
+
+    rank = domain_rank.zero? ? 0 : ((Math.log10(domain_rank) / Math.log10(Feed.maximum(:rank))) * 100).round
+
+    update_attribute(:rank, rank)
+  end
+
+  def domain
+    url = self.url.gsub('feed://', '').gsub('feed:', '').strip
+    url = "http://#{url}" if URI.parse(url).scheme.nil?
+
+    PublicSuffix.domain(URI.parse(url).host)
+  rescue StandardError
+    nil
   end
 
   def async_import

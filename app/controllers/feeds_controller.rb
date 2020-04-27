@@ -1,11 +1,14 @@
+# frozen_string_literal: true
+
 class FeedsController < BaseController
   # callbacks
   before_action :set_feed, only: [:show]
+  before_action :check_token_authorization, only: [:create]
   before_action :check_create_params, only: [:create]
 
   # GET /feeds
   def index
-    @pagy, feeds = pagy Feed.all 
+    @pagy, feeds = pagy Feed.all
 
     json_response_with_serializer(feeds, Serializer::FEED)
   end
@@ -33,11 +36,18 @@ class FeedsController < BaseController
 
   private
 
+  def check_token_authorization
+    return if current_token.never_expires?
+
+    json_error_response('Unauthorized Token', 'your token is not qualified to perform this action.', :unauthorized)
+    nil
+  end
+
   def check_create_params
-    unless feed_params[:url].present?
-      json_error_response('Validation Failed', 'missing URL param', :unprocessable_entity)
-      return
-    end
+    return if feed_params[:url].present?
+
+    json_error_response('Validation Failed', 'missing URL param', :unprocessable_entity)
+    nil
   end
 
   def feed_params

@@ -3,7 +3,7 @@
 
 
 
-# FEEDI
+# FeediRSS
 
 Feedi turns feed data into a fantastic API.
 
@@ -11,9 +11,57 @@ Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep t
 
 ## Search Engine
 
-Take a look at [search.feedi.me](http://search.feedi.me) for a little search engine developed in React around this API. 
+Take a look at a little search engine developed in React around this API. 
 
-Feedback is welcome on [its repository](https://github.com/davidesantangelo/search.feedi.me).
+www.datorss.com
+
+Feedback is welcome on [its repository](https://github.com/davidesantangelo/datorss).
+
+
+## Example
+
+``` json
+
+GET https://api.feedirss.com/search/entries?q=rails
+
+{
+  "data": [
+    {
+      "id": "9237e923-db08-4070-8952-719a796f911a",
+      "type": "entry",
+      "attributes": {
+        "title": "larrycameron80 forked larrycameron80/datorss from davidesantangelo/datorss",
+        "url": "https://github.com/larrycameron80/datorss",
+        "published_at": 1586916098,
+        "body": null,
+        "text": "larrycameron80 forked larrycameron80/datorss from davidesantangelo/datorss",
+        "categories": [],
+        "sentiment": {
+          "type": "neutral",
+          "score": 0.0
+        },
+        "parent": {
+          "id": "7bebbfa1-2aab-4078-b137-467c65a8ea11",
+          "title": "Private Feed for davidesantangelo",
+          "url": "feed:https://github.com/davidesantangelo.private.atom?token=AAIZRI6MMQ2CHEVULORFWUV237TOA",
+          "rank": 99.0
+        },
+        "tags": []
+      },
+      "relationships": {
+        "feed": {
+          "data": {
+            "id": "7bebbfa1-2aab-4078-b137-467c65a8ea11",
+            "type": "feed"
+          }
+        }
+      }
+    },
+  ]
+}
+
+```
+
 
 ## Built With
 
@@ -34,6 +82,11 @@ Plus *lots* of Ruby Gems, a complete list of which is at [/master/Gemfile](https
 If you want to support me in server costs to leave Feedi online, consider buying me a coffee! Thanks!
 
 <a href="https://www.buymeacoffee.com/582rhJH" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
+
+## Schema
+
+All API access is over HTTPS, and accessed from https://api.feedirss.com. All data is sent and received as JSON.
+
 
 ## Routes
 
@@ -65,7 +118,7 @@ Requests that return multiple items will be paginated to 20 items by default. Yo
 
 ```
 Per-Page: 20
-Link: <https://feedi.me/search/entries?q=<q>&page=1>; rel="first", <https://feedi.me/search/entries?q=<q>&page=2>; rel="next", <https://feedi.me/search/entries?q=<q>&page=24>; rel="last"
+Link: <https://api.feedirss.com/search/entries?q=<q>&page=1>; rel="first", <https://api.feedirss.com/search/entries?q=<q>&page=2>; rel="next", <https://api.feedirss.com/search/entries?q=<q>&page=24>; rel="last"
 Total: 464
 ```
 
@@ -78,7 +131,7 @@ Feedi API uses OAuth 2.0 token for user authorization and API authentication. Ap
     # POST /tokens
     
 ``` ruby
-RestClient.post "https://feedi.me/tokens", {}
+RestClient.post "https://api.feedirss.com/tokens", {}
 ```
 
 #### REFRESH TOKEN
@@ -86,7 +139,7 @@ RestClient.post "https://feedi.me/tokens", {}
     # POST /tokens/refresh
     
 ``` ruby
-RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #{TOKEN}" }
+RestClient.post "https://api.feedirss.com/tokens/refresh", {}, { Authorization: "Token #{TOKEN}" }
 ```
 
 #### CURRENT TOKEN
@@ -94,7 +147,7 @@ RestClient.post "https://feedi.me/tokens/refresh", {}, { Authorization: "Token #
     # GET /tokens/current
     
 ``` ruby
-RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://api.feedirss.com/tokens/current", { Authorization: "Token #{TOKEN}" }
 ```
 
 #### RESPONSE ( get, refresh and current )
@@ -121,7 +174,7 @@ RestClient.get "https://feedi.me/tokens/current", { Authorization: "Token #{TOKE
     # GET /feeds
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://api.feedirss.com/feeds", { Authorization: "Token #{TOKEN}" }
 ```
 
 ```json
@@ -160,7 +213,7 @@ RestClient.get "https://feedi.me/feeds", { Authorization: "Token #{TOKEN}" }
     # GET /feeds/:id
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/{id}", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://api.feedirss.com/feeds/{id}", { Authorization: "Token #{TOKEN}" }
 ```
 
 #### CREATE FEED
@@ -172,7 +225,7 @@ payload = { url: "http://www.repubblica.it/rss/homepage/rss2.0.xml" }.to_json
 
 headers = { Authorization: "Token #{TOKEN}", content_type: :json, accept: :json }
 
-RestClient.post("https://feedi.me/feeds", payload, headers)
+RestClient.post("https://api.feedirss.come/feeds", payload, headers)
 ```
 
 #### POPULAR FEEDS
@@ -180,7 +233,7 @@ RestClient.post("https://feedi.me/feeds", payload, headers)
     # GET /feeds/popular
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/popular", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://api.feedirss.com/feeds/popular", { Authorization: "Token #{TOKEN}" }
 ```
 
 ## Entry
@@ -190,7 +243,7 @@ RestClient.get "https://feedi.me/feeds/popular", { Authorization: "Token #{TOKEN
     # GET /feeds/:id/entries
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://api.feedirss.com/feeds/:id/entries", { Authorization: "Token #{TOKEN}" }
 ```
 
 ```json
@@ -291,13 +344,13 @@ RestClient.get "https://feedi.me/feeds/:id/entries", { Authorization: "Token #{T
 #### SEARCH ENTRIES
 
 ``` ruby
-RestClient.get "https://feedi.me/search/entries?q={query}", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://api.feedirss.com/search/entries?q={query}", { Authorization: "Token #{TOKEN}" }
 ```
 
 #### SEARCH FEEDS
 
 ``` ruby
-RestClient.get "https://feedi.me/search/feeds?q={query}", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://api.feedirss.com/search/feeds?q={query}", { Authorization: "Token #{TOKEN}" }
 ```
 
 ## Log
@@ -310,7 +363,7 @@ Every time a feed is imported, everything is logged into logs table.
     # GET /feeds/:feed_id/logs
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/:feed_id/logs", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://api.feedirss.com/feeds/:feed_id/logs", { Authorization: "Token #{TOKEN}" }
 ```
 
 ```json
@@ -359,7 +412,7 @@ RestClient.get "https://feedi.me/feeds/:feed_id/logs", { Authorization: "Token #
     # GET /feeds/:feed_id/logs/:id
 
 ``` ruby
-RestClient.get "https://feedi.me/feeds/:feed_id/logs/:id", { Authorization: "Token #{TOKEN}" }
+RestClient.get "https://api.feedirss.com/feeds/:feed_id/logs/:id", { Authorization: "Token #{TOKEN}" }
 ```
 
 ```json
@@ -386,7 +439,7 @@ RestClient.get "https://feedi.me/feeds/:feed_id/logs/:id", { Authorization: "Tok
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/davidesantangelo/feedi. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/davidesantangelo/feedirss-api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 

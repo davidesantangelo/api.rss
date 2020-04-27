@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class WebhooksController < BaseController
   # callbacks
   before_action :set_feed
-  before_action :set_feed_webhook, only: [:show, :destroy]
+  before_action :set_feed_webhook, only: %i[show destroy]
   before_action :check_create_params, only: [:create]
 
   # GET /feeds/:id/webhooks
   def index
-    @pagy, webhooks = pagy @feed.webhook_endpoints.all 
+    @pagy, webhooks = pagy @feed.webhook_endpoints.all
 
     json_response_with_serializer(webhooks, Serializer::WEBHOOK)
   end
@@ -38,7 +40,7 @@ class WebhooksController < BaseController
   end
 
   private
-  
+
   def check_create_params
     unless webhook_params[:url].present?
       json_error_response('Validation Failed', 'missing URL param', :unprocessable_entity)
@@ -46,7 +48,7 @@ class WebhooksController < BaseController
     end
 
     unless webhook_params[:events].present?
-      json_error_response("Validation Failed", "missing events param (#{Webhook::Event::EVENT_TYPES.join(",")})", :unprocessable_entity)
+      json_error_response('Validation Failed', "missing events param (#{Webhook::Event::EVENT_TYPES.join(',')})", :unprocessable_entity)
       return
     end
   end

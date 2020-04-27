@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Searchable
   extend ActiveSupport::Concern
 
@@ -5,20 +7,20 @@ module Searchable
     include Elasticsearch::Model
 
     after_commit(
-      lambda { __elasticsearch__.index_document  },
-      on: [:create, :update],
+      -> { __elasticsearch__.index_document },
+      on: %i[create update]
     )
 
     after_commit(
-      lambda { __elasticsearch__.delete_document },
-      on: :destroy,
+      -> { __elasticsearch__.delete_document },
+      on: :destroy
     )
 
     index_name do
       [
         Rails.application.engine_name,
-        self.elasticsearch_index_name.to_s.underscore.gsub(/\//, '-'),
-        ::Rails.env,
+        elasticsearch_index_name.to_s.underscore.gsub(%r{/}, '-'),
+        ::Rails.env
       ].join('_')
     end
   end
