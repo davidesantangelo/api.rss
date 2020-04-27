@@ -165,6 +165,20 @@ RestClient.get "https://api.feedirss.com/tokens/current", { Authorization: "Toke
 }
 ```
 
+## Search
+
+#### SEARCH ENTRIES ( NO TOKEN NEEDED )
+
+``` ruby
+RestClient.get "https://api.feedirss.com/search/entries?q={query}", { Authorization: "Token #{TOKEN}" }
+```
+
+#### SEARCH FEEDS
+
+``` ruby
+RestClient.get "https://api.feedirss.com/search/feeds?q={query}", { Authorization: "Token #{TOKEN}" }
+```
+
 ## Feeds
 
 *RSS is a type of web feed which allows users and applications to access updates to online content in a standardized, computer-readable format* — [RSS Wiki](https://en.wikipedia.org/wiki/RSS).
@@ -337,20 +351,6 @@ RestClient.get "https://api.feedirss.com/feeds/:id/entries", { Authorization: "T
     }
   ]
 }
-```
-
-## Search (with elastic)
-
-#### SEARCH ENTRIES
-
-``` ruby
-RestClient.get "https://api.feedirss.com/search/entries?q={query}", { Authorization: "Token #{TOKEN}" }
-```
-
-#### SEARCH FEEDS
-
-``` ruby
-RestClient.get "https://api.feedirss.com/search/feeds?q={query}", { Authorization: "Token #{TOKEN}" }
 ```
 
 ## Log
