@@ -16,6 +16,53 @@ GIT
     elasticsearch-dsl (0.1.9)
 
 GIT
+  remote: https://github.com/rspec/rspec-core.git
+  revision: 30cfad033ee3ce36ca4fceaa4428e8678d1670c3
+  branch: master
+  specs:
+    rspec-core (3.10.0.pre)
+      rspec-support (= 3.10.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-expectations.git
+  revision: e48f774b06721b3ff554d903d4b4da55f6a080b9
+  branch: master
+  specs:
+    rspec-expectations (3.10.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.10.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-mocks.git
+  revision: 11ecaedaaf7604e34fe68fc2020cbd12625a0161
+  branch: master
+  specs:
+    rspec-mocks (3.10.0.pre)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (= 3.10.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-rails.git
+  revision: 1805dbec5a1bda593b33d55265831745f3bbb383
+  branch: master
+  specs:
+    rspec-rails (4.1.0.pre)
+      actionpack (>= 4.2)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
+      rspec-core (= 3.10.0.pre)
+      rspec-expectations (= 3.10.0.pre)
+      rspec-mocks (= 3.10.0.pre)
+      rspec-support (= 3.10.0.pre)
+
+GIT
+  remote: https://github.com/rspec/rspec-support.git
+  revision: e264cda0295e235344910ee9f64b2404c09a5541
+  branch: master
+  specs:
+    rspec-support (3.10.0.pre)
+
+GIT
   remote: https://github.com/seuros/capistrano-sidekiq.git
   revision: 92bf51eae4bdcc2eee2c1d0b2883d77e5e3f1ab8
   specs:
@@ -246,23 +293,6 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rollbar (2.25.0)
-    rspec-core (3.9.1)
-      rspec-support (~> 3.9.1)
-    rspec-expectations (3.9.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-mocks (3.9.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.9.0)
-    rspec-rails (3.9.1)
-      actionpack (>= 3.0)
-      activesupport (>= 3.0)
-      railties (>= 3.0)
-      rspec-core (~> 3.9.0)
-      rspec-expectations (~> 3.9.0)
-      rspec-mocks (~> 3.9.0)
-      rspec-support (~> 3.9.0)
-    rspec-support (3.9.2)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
     sax-machine (1.3.2)
@@ -357,7 +387,11 @@ DEPENDENCIES
   rbnacl-libsodium
   rest-client
   rollbar
-  rspec-rails (~> 3.8)
+  rspec-core!
+  rspec-expectations!
+  rspec-mocks!
+  rspec-rails!
+  rspec-support!
   searchkick
   selenium-webdriver
   sidekiq
