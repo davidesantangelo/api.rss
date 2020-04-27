@@ -2,6 +2,7 @@
 
 class WebhooksController < BaseController
   # callbacks
+  before_action :check_token_authorization, only: [:create]
   before_action :set_feed
   before_action :set_feed_webhook, only: %i[show destroy]
   before_action :check_create_params, only: [:create]
@@ -47,10 +48,9 @@ class WebhooksController < BaseController
       return
     end
 
-    unless webhook_params[:events].present?
-      json_error_response('Validation Failed', "missing events param (#{Webhook::Event::EVENT_TYPES.join(',')})", :unprocessable_entity)
-      return
-    end
+    return if webhook_params[:events].present?
+
+    json_error_response('Validation Failed', "missing events param (#{Webhook::Event::EVENT_TYPES.join(',')})", :unprocessable_entity)
   end
 
   def webhook_params
