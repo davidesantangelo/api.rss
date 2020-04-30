@@ -2,10 +2,9 @@
  <img src="https://img.shields.io/github/languages/top/davidesantangelo/feedi.svg"/>
 
 # FeediRSS
+*The best RESTful RSS experience you can find.*
 
-Feedi turns feed data into a fantastic API.
-
-Feedi simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep track of your favourite feed data with a simple and clean REST API. All entries are enriched by Machine Learning and Semantic engines.
+FeediRSS turns feed data into an awesome API. The API simplifies how you handle RSS, Atom, or JSON feeds. You can add and keep track of your favourite feed data with a simple, fast and clean REST API. All entries are enriched by Machine Learning and Semantic engines.
 
 ## Search Engine
 
@@ -81,7 +80,7 @@ Plus *lots* of Ruby Gems, a complete list of which is at [/master/Gemfile](https
 
 ## Buy me a coffee
 
-If you want to support me in server costs to leave Feedi online, consider buying me a coffee! Thanks!
+If you want to support me in server costs to keep FeediRSS free and up, consider buying me a coffee! Thanks!
 
 <a href="https://www.buymeacoffee.com/582rhJH" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
