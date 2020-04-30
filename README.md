@@ -61,6 +61,8 @@ GET https://api.feedirss.com/search/entries?q=rails
 ```
 ## WIKI
 
+All documentation is in the Wiki section. Feel free to make it better, of course.
+
 https://github.com/davidesantangelo/feedirss-api/wiki
 
 ## Built With
