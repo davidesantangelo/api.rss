@@ -83,36 +83,6 @@ If you want to support me in server costs to leave Feedi online, consider buying
 
 <a href="https://www.buymeacoffee.com/582rhJH" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
 
-## Schema
-
-All API access is over HTTPS, and accessed from https://api.feedirss.com. All data is sent and received as JSON.
-
-
-## Routes
-
-```ruby
-       popular_feeds GET    /feeds/popular(.:format)                   feeds#popular
-     tags_feed_entry GET    /feeds/:feed_id/entries/:id/tags(.:format) entries#tags
-        feed_entries GET    /feeds/:feed_id/entries(.:format)          entries#index
-          feed_entry GET    /feeds/:feed_id/entries/:id(.:format)      entries#show
-           feed_logs GET    /feeds/:feed_id/logs(.:format)             logs#index
-            feed_log GET    /feeds/:feed_id/logs/:id(.:format)         logs#show
-       feed_webhooks GET    /feeds/:feed_id/webhooks(.:format)         webhooks#index
-                     POST   /feeds/:feed_id/webhooks(.:format)         webhooks#create
-        feed_webhook GET    /feeds/:feed_id/webhooks/:id(.:format)     webhooks#show
-                     PATCH  /feeds/:feed_id/webhooks/:id(.:format)     webhooks#update
-                     PUT    /feeds/:feed_id/webhooks/:id(.:format)     webhooks#update
-                     DELETE /feeds/:feed_id/webhooks/:id(.:format)     webhooks#destroy
-               feeds GET    /feeds(.:format)                           feeds#index
-                     POST   /feeds(.:format)                           feeds#create
-                feed GET    /feeds/:id(.:format)                       feeds#show
-entries_search_index GET    /search/entries(.:format)                  search#entries
-  feeds_search_index GET    /search/feeds(.:format)                    search#feeds
-      current_tokens GET    /tokens/current(.:format)                  tokens#current
-      refresh_tokens POST   /tokens/refresh(.:format)                  tokens#refresh
-              tokens POST   /tokens(.:format)                          tokens#create
- ```
-
 ## WIKI
 
 https://github.com/davidesantangelo/feedirss-api/wiki
