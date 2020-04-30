@@ -59,7 +59,7 @@ GET https://api.feedirss.com/search/entries?q=rails
 }
 
 ```
-## WIKI
+## Wiki
 
 All documentation is in the Wiki section. Feel free to make it better, of course.
 
