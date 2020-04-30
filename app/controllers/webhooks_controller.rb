@@ -9,7 +9,7 @@ class WebhooksController < BaseController
 
   # GET /feeds/:id/webhooks
   def index
-    @pagy, webhooks = pagy @feed.webhook_endpoints.all
+    @pagy, webhooks = pagy token_webhook_endpoints
 
     json_response_with_serializer(webhooks, Serializer::WEBHOOK)
   end
@@ -21,14 +21,14 @@ class WebhooksController < BaseController
 
   # POST /feeds/:id/webhooks
   def create
-    @webhook = @feed.webhook_endpoints.create!(webhook_params)
+    @webhook = token_webhook_endpoints.create!(webhook_params)
 
     json_response_with_serializer(@webhook, Serializer::WEBHOOK)
   end
 
   # PATCH/PUT /feeds/:id/webhooks/:id
   def update
-    @webhook = @feed.webhook_endpoints.update(webhook_params)
+    @webhook = token_webhook_endpoints.update(webhook_params)
 
     json_response_with_serializer(@webhook, Serializer::WEBHOOK)
   end
@@ -53,8 +53,12 @@ class WebhooksController < BaseController
     json_error_response('Validation Failed', "missing events param (#{Webhook::Event::EVENT_TYPES.join(',')})", :unprocessable_entity)
   end
 
+  def token_webhook_endpoints
+    @feed.webhook_endpoints.where(token_id: current_token.id)
+  end
+
   def webhook_params
-    params.permit(:url, events: [])
+    params.permit(:feed_id, :url, events: [])
   end
 
   def set_feed
@@ -62,6 +66,6 @@ class WebhooksController < BaseController
   end
 
   def set_feed_webhook
-    @webhook = @feed.webhook_endpoints.find_by!(id: params[:id]) if @feed
+    @webhook = token_webhook_endpoints.find_by!(id: params[:id])
   end
 end

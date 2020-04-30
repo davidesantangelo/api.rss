@@ -3,6 +3,9 @@
 class Token < ApplicationRecord
   EXPIRATION_TIME = 2.hours
 
+  # relations
+  has_many :webhook_endpoints, class_name: 'Webhook::Endpoint'
+
   # callbacks
   before_create :generate_key
 

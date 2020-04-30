@@ -11,6 +11,7 @@ module Webhook
 
     # relations
     belongs_to :feed
+    belongs_to :token
 
     # validations
     validates :url, presence: true, format: URI.regexp(%w[http https])
