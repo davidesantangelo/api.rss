@@ -17,9 +17,9 @@ Feedback is welcome on [its repository](https://github.com/davidesantangelo/dato
 
 ## Example
 
-``` json
+``` bash
 
-GET https://api.feedirss.com/search/entries?q=rails
+curl 'https://api.feedirss.com/search/entries?q=covid' | json_pp
 
 {
   "data": [
