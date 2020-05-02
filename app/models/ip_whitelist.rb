@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class IpWhitelist < ApplicationRecord
+  require 'resolv'
+
+  # validations
+  validates :ip_address, presence: true, uniqueness: true, format: { with: Resolv::IPv4::Regex }
+
   def self.enabled?(ip_address:)
     find_by(ip_address: ip_address).present?
   end
