@@ -19,7 +19,7 @@ Feedback is welcome on [its repository](https://github.com/davidesantangelo/dato
 
 ``` bash
 
-curl 'https://api.feedirss.com/search/entries?q=covid' | json_pp
+curl 'https://api.feedirss.com/search/entries?q=rails' | json_pp
 
 {
   "data": [
