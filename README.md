@@ -19,36 +19,35 @@ Feedback is welcome on [its repository](https://github.com/davidesantangelo/dato
 
 ``` bash
 
-curl 'https://api.feedirss.com/search/entries?q=rails' | json_pp
+curl 'https://api.feedirss.com/search/entries?q=news' | json_pp
 
 {
   "data": [
     {
-      "id": "9237e923-db08-4070-8952-719a796f911a",
+      "id": "86b0f829-e300-4eef-82e1-82f34d03aff6",
       "type": "entry",
       "attributes": {
-        "title": "larrycameron80 forked larrycameron80/datorss from davidesantangelo/datorss",
-        "url": "https://github.com/larrycameron80/datorss",
-        "published_at": 1586916098,
-        "body": null,
-        "text": "larrycameron80 forked larrycameron80/datorss from davidesantangelo/datorss",
-        "categories": [],
-        "sentiment": {
-          "type": "neutral",
-          "score": 0.0
-        },
+        "title": "\"Pandemic, Infodemic\": 2 Cartoon Characters Battling Fake News In Assam",
+        "url": "https://www.ndtv.com/india-news/coronavirus-pandemic-infodemic-2-cartoon-characters-battling-fake-news-in-assam-2222333",
+        "published_at": 1588448805,
+        "body": "An English daily in Assam's Guwahati has been publishing a cartoon strip to tackle the fake news related to the coronavirus pandemic. The two central characters- \"Pandemic and Infodemic\"- are being...<img src=\"http://feeds.feedburner.com/~r/NDTV-LatestNews/~4/lEmH201Q8jI\" height=\"1\" width=\"1\" alt=\"\"/>",
+        "text": "An English daily in Assam's Guwahati has been publishing a cartoon strip to tackle the fake news related to the coronavirus pandemic. The two central characters- \"Pandemic and Infodemic\"- are being...",
+        "categories": [
+          "all india"
+        ],
+        "sentiment": null,
         "parent": {
-          "id": "7bebbfa1-2aab-4078-b137-467c65a8ea11",
-          "title": "Private Feed for davidesantangelo",
-          "url": "feed:https://github.com/davidesantangelo.private.atom?token=AAIZRI6MMQ2CHEVULORFWUV237TOA",
-          "rank": 99.0
+          "id": "c97bdae6-b5d1-4966-b9f3-615e29d4d47d",
+          "title": "NDTV News  -  Special",
+          "url": "feed:http://feeds.feedburner.com/NDTV-LatestNews",
+          "rank": 99
         },
         "tags": []
       },
       "relationships": {
         "feed": {
           "data": {
-            "id": "7bebbfa1-2aab-4078-b137-467c65a8ea11",
+            "id": "c97bdae6-b5d1-4966-b9f3-615e29d4d47d",
             "type": "feed"
           }
         }
