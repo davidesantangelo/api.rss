@@ -9,6 +9,11 @@ RSpec.describe Feed, type: :model do
   it { should have_many(:logs) }
   it { should have_many(:webhook_endpoints) }
 
+  describe 'validations' do
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:url) }
+  end
+
   it 'is not valid without a title' do
     feed = Feed.new(title: nil)
     expect(feed).to_not be_valid

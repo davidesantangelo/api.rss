@@ -7,7 +7,11 @@ RSpec.describe Entry, type: :model do
   let(:entry) { Entry.new }
 
   it { should belong_to(:feed) }
-  it { should validate_presence_of(:title) }
+
+  describe 'validations' do
+    it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:url) }
+  end
 
   it 'is valid with valid attributes' do
     entry.feed = feed
