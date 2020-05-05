@@ -24,7 +24,7 @@ class Feed < ApplicationRecord
   validates :url, presence: true
   validates :title, presence: true
   validates_associated :entries
-  
+
   # class methods
   def self.parse(url:)
     url = url.gsub('feed://', '').gsub('feed:', '').strip
