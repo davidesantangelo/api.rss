@@ -38,6 +38,7 @@ gem 'elasticsearch-rails', github: 'elastic/elasticsearch-rails', branch: '6.x'
 gem 'fast_jsonapi'
 gem 'feedjira'
 gem 'figaro'
+gem 'graphql'
 gem 'hashie'
 gem 'pagy'
 gem 'public_suffix'
@@ -83,8 +84,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'shoulda-matchers'
-  gem 'webdrivers'
   gem 'simplecov'
+  gem 'webdrivers'
 end
 
 group :development, :test do

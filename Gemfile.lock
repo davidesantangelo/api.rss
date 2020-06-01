@@ -206,6 +206,7 @@ GEM
       thor (~> 0.14)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    graphql (1.10.10)
     hashie (4.1.0)
     http-accept (1.7.0)
     http-cookie (1.0.3)
@@ -432,6 +433,7 @@ DEPENDENCIES
   fast_jsonapi
   feedjira
   figaro
+  graphql
   hashie
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
