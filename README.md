@@ -68,12 +68,12 @@ https://github.com/davidesantangelo/feedirss-api/wiki
 - [Ruby on Rails](https://github.com/rails/rails) &mdash; Our back end API is a Rails app. It responds to requests RESTfully in JSON.
 - [PostgreSQL](https://www.postgresql.org/) &mdash; Our main data store is in Postgres.
 - [Redis](https://redis.io/) &mdash; We use Redis as a cache and for transient data.
-- [Feedjira](https://github.com/feedjira/feedjira) Feedjira is a Ruby library designed to parse feeds.
-- [ElasticSearch](https://www.elastic.co/products/elasticsearch) Elasticsearch is a distributed, RESTful search and analytics engine.
-- [Dandelion](https://dandelion.eu) Semantic Text Analytics as a service.
-- [Sidekiq](http://sidekiq.org) Simple, efficient background processing for Ruby.
-- [FastJSONAPI](https://github.com/Netflix/fast_jsonapi) A lightning fast JSON:API serializer for Ruby Objects.
-- [Searchkick](https://github.com/ankane/searchkick) Intelligent search made easy.
+- [Feedjira](https://github.com/feedjira/feedjira) &mdash; Feedjira is a Ruby library designed to parse feeds.
+- [ElasticSearch](https://www.elastic.co/products/elasticsearch) &mdash; Elasticsearch is a distributed, RESTful search and analytics engine.
+- [Dandelion](https://dandelion.eu) &mdash; Semantic Text Analytics as a service.
+- [Sidekiq](http://sidekiq.org) &mdash; Simple, efficient background processing for Ruby.
+- [FastJSONAPI](https://github.com/Netflix/fast_jsonapi) &mdash; A lightning fast JSON:API serializer for Ruby Objects.
+- [Searchkick](https://github.com/ankane/searchkick) &mdash; Intelligent search made easy.
 
 Plus *lots* of Ruby Gems, a complete list of which is at [/master/Gemfile](https://github.com/davidesantangelo/feedi/blob/master/Gemfile).
 
