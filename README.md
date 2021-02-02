@@ -24,7 +24,7 @@ Feedback is welcome on [its repository](https://github.com/davidesantangelo/dato
 
 ``` bash
 
-curl 'https://api.feedirss.com/search/entries?q=news' | json_pp
+curl 'https://<domain>/search/entries?q=news' | json_pp
 
 {
   "data": [
