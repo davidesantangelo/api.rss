@@ -1,6 +1,11 @@
 <a href="https://codeclimate.com/github/davidesantangelo/feedi/maintainability"><img src="https://api.codeclimate.com/v1/badges/e84db3d81a5e9935d63a/maintainability" /></a> <img src="https://img.shields.io/github/tag/davidesantangelo/feedi.svg"/> <a href="https://github.com/eonu/arx/blob/master/LICENSE"><img src="https://camo.githubusercontent.com/ad562cdf422b103f1a409db66ba31cb79414594d/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6963656e73652f656f6e752f6172782e737667" alt="License" data-canonical-src="https://img.shields.io/github/license/eonu/arx.svg" style="max-width:100%;"></a> [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/davidesantangelo/feedi/issues) [![Open Source Helpers](https://www.codetriage.com/davidesantangelo/feedi/badges/users.svg)](https://www.codetriage.com/davidesantangelo/feedi)
  <img src="https://img.shields.io/github/languages/top/davidesantangelo/feedi.svg"/>
 
+# API.RSS — :warning: This project is no longer maintained!!!! :warning:
+
+### Since this project is no longer maintained, please consider using the new project [davideasntangelo/dato.rss](https://github.com/davidesantangelo/dato.rss)!
+
+
 # API.RSS
 *The best RESTful RSS experience you can find.*
 
