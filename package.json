@@ -1,5 +1,4 @@
 {
   "name": "feedi",
-  "private": true,
-  "dependencies": {}
+  "private": true
 }
