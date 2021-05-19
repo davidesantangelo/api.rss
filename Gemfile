@@ -10,7 +10,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use pg as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
